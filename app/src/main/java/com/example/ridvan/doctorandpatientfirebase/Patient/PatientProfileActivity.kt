@@ -31,7 +31,7 @@ class PatientProfileActivity : AppCompatActivity() {
     var updatePatient= PatientDataModel()
     lateinit var ds:String
     lateinit var spinnerDistrict: Spinner
-    var gender=""
+    //var gender=""
     var selectDistrict = arrayOf("Please Select District Specialty")
     val dataDistrict = ArrayList<String>(Arrays.asList(*selectDistrict))
     override fun onCreate(savedInstanceState: Bundle?) {
