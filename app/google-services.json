@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "235039238776",
+    "firebase_url": "https://doctorandpatientfirebase.firebaseio.com",
+    "project_id": "doctorandpatientfirebase",
+    "storage_bucket": "doctorandpatientfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235039238776:android:9583fb9353d93651",
+        "android_client_info": {
+          "package_name": "com.example.ridvan.doctorandpatientfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235039238776-iabp7num7n34sinanoc110k026lgjml0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlIgHy4vbcC-jhSvoqJpXbdMl9dYjUZPs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

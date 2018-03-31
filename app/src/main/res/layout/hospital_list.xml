@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/hospitalPicture"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="18dp"
+            android:src="@drawable/ikon" />
+
+        <TextView
+            android:id="@+id/textViewHospitalName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/hospitalPicture"
+            android:paddingBottom="5dp"
+            android:text="Viral Android"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textViewHospitalCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewHospitalName"
+            android:layout_toRightOf="@+id/hospitalPicture"
+            android:text="Free android tutorials and examples for beginners and expert."
+            android:textColor="#8b8b8b" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

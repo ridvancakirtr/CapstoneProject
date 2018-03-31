@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ridvan.doctorandpatientfirebase.AdminActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
+
+        <Button
+            android:id="@+id/btnAddDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Doctor" />
+
+        <Button
+            android:id="@+id/btnAddPatient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Patient" />
+
+        <Button
+            android:id="@+id/btnAllDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All Doctor" />
+
+        <Button
+            android:id="@+id/btnAllPatient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All Patient" />
+
+        <Button
+            android:id="@+id/btnHospitalAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hospital Add" />
+
+        <Button
+            android:id="@+id/btnAllHospital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All Hospital" />
+
+        <Button
+            android:id="@+id/btnDistrictAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="District Add" />
+    </LinearLayout>
+
+</RelativeLayout>
