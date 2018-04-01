@@ -34,12 +34,13 @@ class PatientProfileActivity : AppCompatActivity() {
     var gender=""
     var selectDistrict = arrayOf("Please Select District Specialty")
     val dataDistrict = ArrayList<String>(Arrays.asList(*selectDistrict))
+    var districtSelectedId = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
         userReadData()
-        readDistrict()
-        spinnerAddDistrict()
+        //readDistrict()
+        //spinnerAddDistrict()
         btnUpdatePatient.setOnClickListener {
             val credential = EmailAuthProvider.getCredential(editTextPatientEmail.text.toString(),updatePatientPassword.text.toString())
             mAuth.currentUser?.reauthenticate(credential)!!
@@ -47,6 +48,7 @@ class PatientProfileActivity : AppCompatActivity() {
         }
     }
 
+    @Deprecated(message = "Use spinnerAddAndSelectDistrict function")
     private fun spinnerAddDistrict(){
         spinnerDistrict=findViewById(R.id.spinnerDistrict)
         spinnerDistrict.adapter= ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataDistrict)
@@ -62,6 +64,40 @@ class PatientProfileActivity : AppCompatActivity() {
         }
     }
 
+    private fun spinnerReadAndSelectDistrict(patientDistrict: String){
+        var ref=FirebaseDatabase.getInstance().reference
+        var query=ref.child("District").orderByKey()
+        var spinnerAdapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataDistrict)
+
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot?) {
+                for ((i, singleSnapshot) in p0!!.children.withIndex()){
+                    var readUser=singleSnapshot.getValue(District::class.java)
+                    dataDistrict.add(readUser?.district.toString())
+                }
+                spinnerDistrict.setSelection(spinnerAdapter.getPosition(patientDistrict))
+            }
+        })
+
+        spinnerDistrict=findViewById(R.id.spinnerDistrict)
+        spinnerDistrict.adapter= spinnerAdapter
+        spinnerDistrict.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                Log.e("Data", spinnerDistrict.getItemIdAtPosition(position).toString())
+
+            }
+        }
+    }
+
+    @Deprecated(message = "Use spinnerReadAndSelectDistrict function")
     private fun readDistrict(){
         var ref=FirebaseDatabase.getInstance().reference
         var query=ref.child("District").orderByKey()
@@ -100,7 +136,8 @@ class PatientProfileActivity : AppCompatActivity() {
                         updateAdress.setText(readUser?.adress)
                         updatePatientMobilePhone.setText(readUser?.patient_mobile_phone)
                         updatePatientNameSurname.setText(readUser?.patient_name_surname)
-                        ds= readUser?.district!!
+                        ds = readUser?.district!!
+                        spinnerReadAndSelectDistrict(ds)
                         if(readUser?.patient_gender.toString()!=="Male"){
                             updatePatMale.isChecked=true
                         }else{
