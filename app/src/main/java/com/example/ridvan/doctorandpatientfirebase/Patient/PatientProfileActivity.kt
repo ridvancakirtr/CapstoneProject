@@ -37,8 +37,8 @@ class PatientProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
-        //userReadData()
-        //readDistrict()
+        userReadData()
+        readDistrict()
         spinnerAddDistrict()
         btnUpdatePatient.setOnClickListener {
             val credential = EmailAuthProvider.getCredential(editTextPatientEmail.text.toString(),updatePatientPassword.text.toString())
@@ -56,7 +56,7 @@ class PatientProfileActivity : AppCompatActivity() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                            Log.e("Data", spinnerDistrict.getItemIdAtPosition(position).toString())
+                Log.e("Data", spinnerDistrict.getItemIdAtPosition(position).toString())
 
             }
         }
@@ -86,7 +86,7 @@ class PatientProfileActivity : AppCompatActivity() {
         var ref = FirebaseDatabase.getInstance().reference
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
-            PatEmail.setText(user.email.toString())
+            updatePatEmail.setText(user?.email)
             var query=ref.child("Patient").orderByKey().equalTo(user.uid)
             query.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError?) {
@@ -95,18 +95,19 @@ class PatientProfileActivity : AppCompatActivity() {
                 override fun onDataChange(p0: DataSnapshot?) {
                     var ds:String
                     for (singleSnapshot in p0!!.children){
-                    var readUser = singleSnapshot?.getValue(PatientDataModel::class.java)
-                   Adress.setText(readUser?.adress)
-                   patientMobilePhone.setText(readUser?.patient_mobile_phone)
-                   updatePatientNameSurname.setText(readUser?.patient_name_surname)
+                        var readUser = singleSnapshot?.getValue(PatientDataModel::class.java)
+
+                        updateAdress.setText(readUser?.adress)
+                        updatePatientMobilePhone.setText(readUser?.patient_mobile_phone)
+                        updatePatientNameSurname.setText(readUser?.patient_name_surname)
                         ds= readUser?.district!!
                         if(readUser?.patient_gender.toString()!=="Male"){
-                            PatMale.isChecked=true
+                            updatePatMale.isChecked=true
                         }else{
-                            PatFeMale.isChecked=true
+                            updatePatFeMale.isChecked=true
                         }
+                    }
                 }
-            }
             })
         }
 
