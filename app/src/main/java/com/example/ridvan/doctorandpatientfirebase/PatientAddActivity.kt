@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_my_profile.*
 import kotlinx.android.synthetic.main.activity_patient_add.*
 import java.util.*
 
@@ -81,7 +82,7 @@ class PatientAddActivity : AppCompatActivity() {
                         addPatient.patient_gender=gender
                         addPatient.district=spinerDistrict.selectedItem.toString()
                         addPatient.adress=Adress.text.toString()
-                        addPatient.patient_mobile_phone=patientNameSurname.text.toString()
+                        addPatient.patient_mobile_phone=updatePatientMobilePhone.text.toString()
                         addPatient.level = "2"
                         addPatient.patient_user_id=mAuth.currentUser?.uid
                         FirebaseDatabase.getInstance().reference
@@ -105,7 +106,7 @@ class PatientAddActivity : AppCompatActivity() {
     }
 
     private fun redirectMainPage(){
-        var redirectMainPage= Intent(this@PatientAddActivity, AdminActivity::class.java)
+        val redirectMainPage= Intent(this@PatientAddActivity, AdminActivity::class.java)
         startActivity(redirectMainPage)
     }
 
@@ -126,8 +127,8 @@ class PatientAddActivity : AppCompatActivity() {
     }
 
     private fun readHospital(){
-        var ref=FirebaseDatabase.getInstance().reference
-        var query=ref.child("District")
+        val ref=FirebaseDatabase.getInstance().reference
+        val query=ref.child("District")
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
 
@@ -135,7 +136,7 @@ class PatientAddActivity : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot?) {
                 for (singleSnapshot in p0!!.children){
-                    var readUser=singleSnapshot.getValue(PatientDataModel::class.java)
+                    val readUser=singleSnapshot.getValue(PatientDataModel::class.java)
                     dataDistrict.add(readUser?.district!!)
                 }
             }

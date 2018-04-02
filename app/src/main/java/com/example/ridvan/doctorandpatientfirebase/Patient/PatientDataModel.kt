@@ -1,5 +1,9 @@
 package com.example.ridvan.doctorandpatientfirebase.Patient
 
+import com.google.firebase.database.Exclude
+import java.util.*
+
+
 class PatientDataModel {
     var patient_name_surname:String?=null
     var patient_gender:String?=null
@@ -23,7 +27,5 @@ class PatientDataModel {
         this.level = level
         this.patient_user_id = patient_user_id
     }
-
-
 }
 
