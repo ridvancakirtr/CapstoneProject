@@ -37,5 +37,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation 'com.firebaseui:firebase-ui-database:2.3.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    compile 'com.github.nkzawa:socket.io-client:0.3.0'
 }
 apply plugin: 'com.google.gms.google-services'
