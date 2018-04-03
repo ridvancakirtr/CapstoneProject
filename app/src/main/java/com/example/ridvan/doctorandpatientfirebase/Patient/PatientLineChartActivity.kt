@@ -8,42 +8,55 @@ import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.google.firebase.auth.FirebaseAuth
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
 import java.net.URISyntaxException
-import com.github.nkzawa.emitter.Emitter
 import org.json.*
 import java.util.ArrayList
 
 class PatientLineChartActivity : AppCompatActivity() {
     private var mSocket: Socket? = null
-    val entries = ArrayList<Entry>()
+
+    private val entriesEkg = ArrayList<Entry>()
+    private val entriesTemp = ArrayList<Entry>()
+    private val entriesPulse = ArrayList<Entry>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.line_chart)
 
+        val dataSetEkg = LineDataSet(entriesEkg, "Ekg")
+        val dataSetTemp = LineDataSet(entriesTemp, "Temperature")
+        val dataSetPulse = LineDataSet(entriesPulse, "Pulse")
 
-        val dataSet = LineDataSet(entries, "Ekg")
-        val lineData = LineData(dataSet)
-        val chart = findViewById<LineChart>(R.id.chart)
+        val lineDataEkg = LineData(dataSetEkg)
+        val lineDataTemp = LineData(dataSetTemp)
+        val lineDataPulse = LineData(dataSetPulse)
+
+        val chartEkg = findViewById<LineChart>(R.id.chartEkg)
+        val chartTemp = findViewById<LineChart>(R.id.chartTemp)
+        val chartPulse = findViewById<LineChart>(R.id.chartPulse)
+
         /*
-         * Chart kütüphanesinde sorun bug olduğu için boşken hata veriyor.
+         * Chart kütüphanesinde bug olduğu için boşken hata veriyor.
          */
-        dataSet.addEntry(Entry(0.0F, 0.0F))
-        dataSet.notifyDataSetChanged()
-        lineData.notifyDataChanged()
+        dataSetEkg.addEntry(Entry(0.0F, 0.0F))
+        dataSetTemp.addEntry(Entry(0.0F, 0.0F))
+        dataSetPulse.addEntry(Entry(0.0F, 0.0F))
 
-        chart.data = lineData
+        dataSetEkg.notifyDataSetChanged()
+        dataSetPulse.notifyDataSetChanged()
+        dataSetEkg.notifyDataSetChanged()
+
+
+        chartEkg.data = lineDataEkg
+        chartTemp.data = lineDataTemp
+        chartPulse.data = lineDataPulse
 
         run {
             try {
                 mSocket = IO.socket("http://46.45.162.122:8000/tty")
-                println("Connected")
-            } catch (e: URISyntaxException) {
-                println("Not Connected")
-            }
+            } catch (e: URISyntaxException) { }
         }
 
         mSocket!!.connect()
@@ -53,18 +66,34 @@ class PatientLineChartActivity : AppCompatActivity() {
 
                 try {
                     receivedJson = JSONObject(args[0].toString())
+                    println(receivedJson.toString())
                 } catch (e: JSONException)  {
                     return@Runnable
                 }
 
                 if (receivedJson.has("Ekg")) {
-                    dataSet.addEntry(Entry(lineData.entryCount.toFloat(), receivedJson.getInt("Ekg").toFloat()))
+                    dataSetEkg.addEntry(Entry(lineDataEkg.entryCount.toFloat(), receivedJson.getInt("Ekg").toFloat()))
+                    dataSetEkg.notifyDataSetChanged()
+                    lineDataEkg.notifyDataChanged()
+                    chartEkg.notifyDataSetChanged()
+                    chartEkg.invalidate()
                 }
 
-                dataSet.notifyDataSetChanged()
-                lineData.notifyDataChanged()
-                chart.notifyDataSetChanged()
-                chart.invalidate()
+                if (receivedJson.has("Temp")) {
+                    dataSetTemp.addEntry(Entry(lineDataTemp.entryCount.toFloat(), receivedJson.getInt("Temp").toFloat()))
+                    dataSetTemp.notifyDataSetChanged()
+                    lineDataTemp.notifyDataChanged()
+                    chartTemp.notifyDataSetChanged()
+                    chartTemp.invalidate()
+                }
+
+                if (receivedJson.has("Puls")) {
+                    dataSetPulse.addEntry(Entry(lineDataPulse.entryCount.toFloat(), receivedJson.getInt("Puls").toFloat()))
+                    dataSetPulse.notifyDataSetChanged()
+                    lineDataPulse.notifyDataChanged()
+                    chartPulse.notifyDataSetChanged()
+                    chartPulse.invalidate()
+                }
             })
         }
 

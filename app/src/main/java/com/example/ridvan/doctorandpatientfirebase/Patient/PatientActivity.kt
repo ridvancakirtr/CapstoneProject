@@ -18,9 +18,9 @@ class PatientActivity : AppCompatActivity() {
                 var userProfile=Intent(this@PatientActivity, PatientProfileActivity::class.java)
                 startActivity(userProfile)
             }
-            btbUserData.setOnClickListener {
-                var myData = Intent(this@PatientActivity, PatientLineChartActivity::class.java)
-                startActivity(myData)
+            btnLiveTest.setOnClickListener {
+                var liveTest = Intent(this@PatientActivity, PatientLineChartActivity::class.java)
+                startActivity(liveTest)
             }
         }
 

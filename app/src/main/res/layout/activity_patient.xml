@@ -14,8 +14,14 @@
         android:text="MY PROFILE" />
 
     <Button
-        android:id="@+id/btbUserData"
+        android:id="@+id/btnUserData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="MY DATA" />
+
+    <Button
+        android:id="@+id/btnLiveTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LIVE DATA TEST" />
 </LinearLayout>
