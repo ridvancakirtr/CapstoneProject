@@ -8,7 +8,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import com.example.ridvan.doctorandpatientfirebase.Patient.PatientDataModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -82,7 +81,7 @@ class PatientAddActivity : AppCompatActivity() {
                         addPatient.patient_gender=gender
                         addPatient.district=spinerDistrict.selectedItem.toString()
                         addPatient.adress=Adress.text.toString()
-                        addPatient.patient_mobile_phone=updatePatientMobilePhone.text.toString()
+                        addPatient.patient_mobile_phone=patientMobilePhone.text.toString()
                         addPatient.level = "2"
                         addPatient.patient_user_id=mAuth.currentUser?.uid
                         FirebaseDatabase.getInstance().reference

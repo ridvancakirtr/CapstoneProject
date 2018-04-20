@@ -3,6 +3,7 @@ package com.example.ridvan.doctorandpatientfirebase
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_admin.*
 
@@ -17,8 +18,12 @@ class AdminActivity : AppCompatActivity() {
             startActivity(doctorAddIntent)
         }
         btnAllDoctor.setOnClickListener {
-            var doctorListIntent=Intent(this@AdminActivity, DoctorAddActivity::class.java)
+            var doctorListIntent=Intent(this@AdminActivity, AllDoctorActivity::class.java)
             startActivity(doctorListIntent)
+        }
+        btnAllPatient.setOnClickListener {
+            var patientListIntent=Intent(this@AdminActivity, AllPatientActivity::class.java)
+            startActivity(patientListIntent)
         }
         btnAddPatient.setOnClickListener {
             var patientAddIntent=Intent(this@AdminActivity, PatientAddActivity::class.java)

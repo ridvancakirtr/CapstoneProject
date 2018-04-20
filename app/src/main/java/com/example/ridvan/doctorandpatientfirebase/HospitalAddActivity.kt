@@ -22,7 +22,7 @@ class HospitalAddActivity : AppCompatActivity() {
     lateinit var spinnerDistrict: Spinner
     var selectDistrict = arrayOf("Please Select District Specialty")
     val dataDistrict = ArrayList<String>(Arrays.asList(*selectDistrict))
-    var hospital=Hospital()
+    var hospital=HospitalDataModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hospital_add)
@@ -42,6 +42,7 @@ class HospitalAddActivity : AppCompatActivity() {
         var id=ref.push().key
         hospital.hospital_name=editTextHospitalName.text.toString()
         hospital.hospital_city=spinnerHospitalDistrict.selectedItem.toString()
+        hospital.hospital_id=id
         ref.child("Hospital").child(id)
                 .setValue(hospital)
                 .addOnCompleteListener {task ->

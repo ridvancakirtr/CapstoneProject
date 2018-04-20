@@ -8,33 +8,33 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.hospital_list.view.*
 import java.util.ArrayList
     /**
-     * Kendi Oluşturacağımız view Holderın Adını Yazdık -> DoctorsViewHolder
+     * Kendi Oluşturacağımız view Holderın Adını Yazdık -> HospitalsViewHolder
      */
-class HospitalAdapter(allDoctors: ArrayList<Hospital>) : RecyclerView.Adapter<HospitalAdapter.DoctorsViewHolder>() {
-    var doctorsAll=allDoctors
+class HospitalAdapter(allHospitals: ArrayList<HospitalDataModel>) : RecyclerView.Adapter<HospitalAdapter.HospitalsViewHolder>() {
+    var hospitalAll=allHospitals
     override fun getItemCount(): Int {
         //Adapter iik çalıştığı zaman buraya bakar
-        return doctorsAll.size
+        return hospitalAll.size
     }
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int):DoctorsViewHolder? {
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int):HospitalsViewHolder? {
         //viewHolder burada oluşturulacak (inflater işlemi)
         var inflater= LayoutInflater.from(parent?.context)
-        var oneLineDoctor=inflater.inflate(R.layout.hospital_list,parent,false)
+        var oneLineHospital=inflater.inflate(R.layout.hospital_list,parent,false)
 
-        return DoctorsViewHolder(oneLineDoctor)
+        return HospitalsViewHolder(oneLineHospital)
     }
-    override fun onBindViewHolder(holder: DoctorsViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: HospitalsViewHolder?, position: Int) {
         //benim oluşturduğum sınıfın nesnesini geriğe dönecek
 
-        holder?.textViewHospitalName?.text=doctorsAll.get(position).hospital_name
-        holder?.textViewHospitalCity?.text=doctorsAll.get(position).hospital_city
+        holder?.textViewHospitalName?.text=hospitalAll.get(position).hospital_name
+        holder?.textViewHospitalCity?.text=hospitalAll.get(position).hospital_city
     }
 
-    class DoctorsViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class HospitalsViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         //içindeki elemanlara buradan erişeceğim
-        var oneLineDoctor=itemView as CardView
-        var textViewHospitalName=oneLineDoctor.textViewHospitalName
-        var textViewHospitalCity=oneLineDoctor.textViewHospitalCity
+        var oneLineHospital=itemView as CardView
+        var textViewHospitalName=oneLineHospital.textViewHospitalName
+        var textViewHospitalCity=oneLineHospital.textViewHospitalCity
 
     }
 }

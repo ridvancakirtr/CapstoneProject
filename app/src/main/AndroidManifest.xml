@@ -24,8 +24,10 @@
         <activity android:name=".Patient.PatientProfileActivity" />
         <activity android:name=".HospitalAddActivity" />
         <activity android:name=".DistrictAddActivity" />
-        <activity android:name=".AllHospitalActivity"/>
-        <activity android:name=".Patient.PatientLineChartActivity"/>
+        <activity android:name=".AllHospitalActivity" />
+        <activity android:name=".Patient.PatientLineChartActivity" />
+        <activity android:name=".AllDoctorActivity" />
+        <activity android:name=".AllPatientActivity"></activity>
     </application>
 
 </manifest>

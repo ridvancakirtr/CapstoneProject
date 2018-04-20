@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.ridvan.doctorandpatientfirebase.District
+import com.example.ridvan.doctorandpatientfirebase.PatientDataModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -22,7 +23,7 @@ import java.util.*
 
 class PatientProfileActivity : AppCompatActivity() {
     var mAuth = FirebaseAuth.getInstance()
-    var updatePatient=PatientDataModel()
+    var updatePatient= PatientDataModel()
     lateinit var ds:String
     lateinit var spinnerDistrict: Spinner
     var selectDistrict = arrayOf("Please Select District Specialty")

@@ -11,7 +11,7 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/hospitalPicture"
+            android:id="@+id/doctorPicture"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_alignParentTop="true"
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/hospitalPicture"
+            android:layout_toRightOf="@+id/doctorPicture"
             android:paddingBottom="5dp"
             android:text="Viral Android"
             android:textSize="24sp" />
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewHospitalName"
-            android:layout_toRightOf="@+id/hospitalPicture"
+            android:layout_toRightOf="@+id/doctorPicture"
             android:text="Free android tutorials and examples for beginners and expert."
             android:textColor="#8b8b8b" />
 
