@@ -16,14 +16,14 @@ class HospitalAdapter(allHospitals: ArrayList<HospitalDataModel>) : RecyclerView
         //Adapter iik çalıştığı zaman buraya bakar
         return hospitalAll.size
     }
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int):HospitalsViewHolder? {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HospitalsViewHolder {
         //viewHolder burada oluşturulacak (inflater işlemi)
         var inflater= LayoutInflater.from(parent?.context)
         var oneLineHospital=inflater.inflate(R.layout.hospital_list,parent,false)
 
         return HospitalsViewHolder(oneLineHospital)
     }
-    override fun onBindViewHolder(holder: HospitalsViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: HospitalsViewHolder, position: Int) {
         //benim oluşturduğum sınıfın nesnesini geriğe dönecek
 
         holder?.textViewHospitalName?.text=hospitalAll.get(position).hospital_name

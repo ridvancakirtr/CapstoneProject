@@ -48,7 +48,7 @@ class AllDoctorActivity : AppCompatActivity() {
                 for (postSnapshot in dataSnapshot.children) {
 
                     val post = postSnapshot.getValue(DoctorDataModel::class.java)
-                    allDoctors.add(DoctorDataModel(post!!.doctor_name_surname, post.doctor_area_expertise,post.doctor_user_id))
+                    allDoctors.add(DoctorDataModel(post!!.doctor_name_surname, post.doctor_area_expertise,post.doctor_user_id,post.doctor_profile_pictures))
 
                 }
 

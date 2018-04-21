@@ -117,6 +117,7 @@ class DoctorAddActivity : AppCompatActivity() {
                 .addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
                     if (task.isSuccessful) {
                         addDoctor.doctor_name_surname=editTextDoctorNameSurname.text.toString()
+                        addDoctor.doctor_profile_pictures="null"
                         addDoctor.doctor_gender=gender
                         addDoctor.doctor_area_expertise=spinnerAreaExpertise.selectedItem.toString()
                         addDoctor.doctor_hospital_name=spinnerHospitalName.selectedItem.toString()

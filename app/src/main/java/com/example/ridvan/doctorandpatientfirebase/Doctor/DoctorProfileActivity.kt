@@ -1,12 +1,14 @@
 package com.example.ridvan.doctorandpatientfirebase.Doctor
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
+import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.ridvan.doctorandpatientfirebase.DoctorDataModel
-import com.example.ridvan.doctorandpatientfirebase.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -14,30 +16,63 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_doctor_profile.*
 import android.provider.MediaStore
-import java.io.IOException
+import android.view.View
+import com.example.ridvan.doctorandpatientfirebase.R
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
+import java.io.ByteArrayOutputStream
 import java.util.*
 
 
 class DoctorProfileActivity : AppCompatActivity() {
+    var contentURI: Uri? = null
+    var strogeRef=FirebaseStorage.getInstance().reference
     var mAuth = FirebaseAuth.getInstance()
     lateinit var bitmap:Bitmap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doctor_profile)
         readDoctorData()
-        doctorProfilePicture.setImageURI(mAuth.currentUser?.photoUrl)
         btnSaveAll.setOnClickListener {
             updateDoctors()
         }
 
         doctorProfilePicture.setOnClickListener {
-            updateProfilePicture()
-
+                selectProfilePicture()
         }
 
     }
 
-    private fun updateProfilePicture() {
+    private fun pictureCompressi(contentURI: Uri) {
+        var compress=pictureCompressionBack()
+        compress.execute(contentURI)
+
+    }
+
+    /*
+    private fun Permissions() {
+        var per= arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        if (ContextCompat.checkSelfPermission(this@DoctorProfileActivity,per[0])==PackageManager.PERMISSION_GRANTED){
+            requestPermiss=true
+        }else{
+            ActivityCompat.requestPermissions(this@DoctorProfileActivity,per,150)
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode==150){
+            if (grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                updateProfilePicture()
+            }else{
+                Toast.makeText(this@DoctorProfileActivity,"İzin ver", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+    */
+
+    private fun selectProfilePicture() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.addCategory(Intent.CATEGORY_OPENABLE)
         intent.type = "image/*"
@@ -46,18 +81,55 @@ class DoctorProfileActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 100) {
-            if (data != null) {
-                val contentURI = data.data
-                try {
-                    bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver,contentURI)
-                    doctorProfilePicture!!.setImageBitmap(bitmap)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                    Toast.makeText(this@DoctorProfileActivity, "Failed!", Toast.LENGTH_SHORT).show()
-                }
-            }
+        if (requestCode == 100 && resultCode== Activity.RESULT_OK && data!=null) {
+            contentURI = data.data
+            doctorProfilePicture.setImageURI(contentURI)
+            pictureCompressi(contentURI!!)
         }
+    }
+
+    inner class pictureCompressionBack : AsyncTask<Uri,Double,ByteArray?>(){
+
+        override fun doInBackground(vararg p0: Uri?): ByteArray? {
+            bitmap = MediaStore.Images.Media.getBitmap(this@DoctorProfileActivity.contentResolver,p0[0])
+            var imageByte:ByteArray?=null
+            for (i in 1..5){
+                imageByte=ConvertBitmapByte(bitmap,100/i)
+                publishProgress(imageByte!!.size.toDouble()) // Main Thread with Worker Thread arasında köprü olur sonucu ->  onProgressUpdate()
+            }
+            return imageByte
+        }
+
+        private fun ConvertBitmapByte(bitmap: Bitmap?, i: Int): ByteArray? {
+            var stream=ByteArrayOutputStream()
+            bitmap?.compress(Bitmap.CompressFormat.JPEG,i,stream)
+            return stream.toByteArray()
+        }
+
+        override fun onPostExecute(result: ByteArray?) {
+            super.onPostExecute(result)
+            uploadImagesToFirebase(result)
+
+
+        }
+
+        private fun uploadImagesToFirebase(result: ByteArray?) {
+            var refStore=FirebaseStorage.getInstance().reference
+                    .child("images/users/"+mAuth.currentUser?.uid+"/profilePicture")
+            refStore.putBytes(result!!)
+                    .addOnSuccessListener { p0 ->
+                        var firebaseUri=p0?.downloadUrl
+                        Toast.makeText(this@DoctorProfileActivity, "Updated Profile Picture",Toast.LENGTH_SHORT).show()
+                    FirebaseDatabase.getInstance().reference.child("Doctors")
+                            .child(mAuth.currentUser?.uid)
+                            .child("doctor_profile_pictures")
+                            .setValue(firebaseUri.toString())
+
+                    }.addOnFailureListener {
+                        Toast.makeText(this@DoctorProfileActivity, "Hata Oluştu!", Toast.LENGTH_SHORT).show()
+                    }
+        }
+
     }
 
     private fun updateDoctors() {
@@ -73,7 +145,7 @@ class DoctorProfileActivity : AppCompatActivity() {
                     .addOnCompleteListener {task->
                         if (task.isSuccessful){
                             Toast.makeText(this@DoctorProfileActivity,"Profile Successfully Updated", Toast.LENGTH_SHORT).show()
-                            redirectMainPage()
+
                         }else{
                             Toast.makeText(this@DoctorProfileActivity,"ERROR Profile Not Updated", Toast.LENGTH_SHORT).show()
                         }
@@ -103,15 +175,11 @@ class DoctorProfileActivity : AppCompatActivity() {
                         doctorGender.setText(readUser!!.doctor_gender)
                         doctorMobilePhone.setText(readUser!!.doctor_mobile_phone)
                         doctorOfficePhone.setText(readUser!!.doctor_office_phone)
+                        Picasso.with(this@DoctorProfileActivity).load(readUser.doctor_profile_pictures).into(doctorProfilePicture)
                     }
                 }
             })
         }
-    }
-
-    private fun redirectMainPage(){
-        var redirectMainPage= Intent(this@DoctorProfileActivity, DoctorActivity::class.java)
-        startActivity(redirectMainPage)
     }
 
 }
