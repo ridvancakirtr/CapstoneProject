@@ -1,8 +1,10 @@
 package com.example.ridvan.doctorandpatientfirebase.Doctor
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ridvan.doctorandpatientfirebase.R
+import kotlinx.android.synthetic.main.activity_doctor.*
 
 class DoctorActivity : AppCompatActivity() {
 
@@ -10,6 +12,9 @@ class DoctorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doctor)
 
-
+        btnMyProfile.setOnClickListener {
+            var intent=Intent(this@DoctorActivity,DoctorProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

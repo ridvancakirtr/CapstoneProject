@@ -27,7 +27,8 @@
         <activity android:name=".AllHospitalActivity" />
         <activity android:name=".Patient.PatientLineChartActivity" />
         <activity android:name=".AllDoctorActivity" />
-        <activity android:name=".AllPatientActivity"></activity>
+        <activity android:name=".AllPatientActivity" />
+        <activity android:name=".Doctor.DoctorProfileActivity"></activity>
     </application>
 
 </manifest>
