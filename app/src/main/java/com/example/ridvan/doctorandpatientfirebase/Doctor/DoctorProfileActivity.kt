@@ -25,7 +25,7 @@ import java.util.*
 
 
 class DoctorProfileActivity : AppCompatActivity() {
-    var contentURI: Uri? = null
+    private var contentURI: Uri? = null
     var strogeRef=FirebaseStorage.getInstance().reference
     var mAuth = FirebaseAuth.getInstance()
     lateinit var bitmap:Bitmap
