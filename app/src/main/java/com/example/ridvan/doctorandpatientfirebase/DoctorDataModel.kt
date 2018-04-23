@@ -31,11 +31,13 @@ class DoctorDataModel {
         this.doctor_user_id = doctor_user_id
     }
 
-    constructor(doctor_name_surname: String?, doctor_profile_pictures: String?, doctor_area_expertise: String?, doctor_office_phone: String?) {
+    constructor(doctor_name_surname: String?, doctor_profile_pictures: String?, doctor_area_expertise: String?, doctor_hospital_name: String?,doctor_user_id: String?) {
         this.doctor_name_surname = doctor_name_surname
         this.doctor_profile_pictures = doctor_profile_pictures
         this.doctor_area_expertise = doctor_area_expertise
-        this.doctor_office_phone = doctor_office_phone
+        this.doctor_hospital_name = doctor_hospital_name
+        this.doctor_user_id = doctor_user_id
     }
+
 
 }

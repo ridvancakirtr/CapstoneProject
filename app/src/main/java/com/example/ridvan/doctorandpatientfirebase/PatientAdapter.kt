@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.patient_list.view.*
 import java.util.ArrayList
     /**
@@ -28,6 +29,9 @@ class PatientAdapter(allPatients: ArrayList<PatientDataModel>) : RecyclerView.Ad
 
         holder?.textViewPatientNameSurname?.text=patientAll.get(position).patient_name_surname
         holder?.textViewDistrict?.text=patientAll.get(position).district
+        Picasso.with(holder.itemView.context).load(patientAll.get(position).patient_profile_picture)
+                .into(holder.itemView.patientPicture)
+        holder?.textViewMobile?.text=patientAll.get(position).patient_mobile_phone
     }
 
     class PatientViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
@@ -35,6 +39,7 @@ class PatientAdapter(allPatients: ArrayList<PatientDataModel>) : RecyclerView.Ad
         var oneLinePatient=itemView as CardView
         var textViewPatientNameSurname=oneLinePatient.textViewPatientName
         var textViewDistrict=oneLinePatient.textViewDistrict
+        var textViewMobile=oneLinePatient.textViewMobile
 
     }
 }

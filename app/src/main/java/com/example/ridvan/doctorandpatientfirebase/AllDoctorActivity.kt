@@ -43,12 +43,13 @@ class AllDoctorActivity : AppCompatActivity() {
     private fun readHospitalFirebase() {
         mPostReference = FirebaseDatabase.getInstance().reference
         val query = mPostReference.child("Doctors").orderByKey()
+
         query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (postSnapshot in dataSnapshot.children) {
 
                     val post = postSnapshot.getValue(DoctorDataModel::class.java)
-                    allDoctors.add(DoctorDataModel(post!!.doctor_name_surname, post.doctor_area_expertise,post.doctor_user_id,post.doctor_profile_pictures))
+                    allDoctors.add(DoctorDataModel(post!!.doctor_name_surname, post.doctor_profile_pictures,post.doctor_area_expertise,post.doctor_hospital_name,post.doctor_user_id))
 
                 }
 

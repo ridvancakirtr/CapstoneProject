@@ -2,9 +2,11 @@ package com.example.ridvan.doctorandpatientfirebase
 
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.doctor_list.view.*
 import java.util.ArrayList
     /**
@@ -25,9 +27,11 @@ class DoctorAdapter(allDoctors: ArrayList<DoctorDataModel>) : RecyclerView.Adapt
     }
     override fun onBindViewHolder(holder: DoctorsViewHolder, position: Int) {
         //benim oluşturduğum sınıfın nesnesini geriğe dönecek
-
         holder?.textViewDoctorNameSurname?.text=doctorAll.get(position).doctor_name_surname
         holder?.textViewAreaExpertise?.text=doctorAll.get(position).doctor_area_expertise
+        Picasso.with(holder.itemView.context).load(doctorAll.get(position).doctor_profile_pictures)
+                .into(holder.itemView.doctorPictures)
+        holder?.textViewHospitalName?.text=doctorAll.get(position).doctor_hospital_name
     }
 
     class DoctorsViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
@@ -35,6 +39,7 @@ class DoctorAdapter(allDoctors: ArrayList<DoctorDataModel>) : RecyclerView.Adapt
         var oneLineDoctor=itemView as CardView
         var textViewDoctorNameSurname=oneLineDoctor.textViewDoctorNameSurname
         var textViewAreaExpertise=oneLineDoctor.textViewAreaExpertise
+        var textViewHospitalName=oneLineDoctor.textViewHospitalName
 
     }
 }

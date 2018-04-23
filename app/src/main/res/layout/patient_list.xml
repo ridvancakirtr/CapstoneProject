@@ -10,13 +10,13 @@
         android:elevation="4dp"
         android:padding="16dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/patientPicture"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_alignParentTop="true"
             android:layout_marginRight="18dp"
-            android:src="@drawable/ikon" />
+            android:src="@drawable/common_google_signin_btn_icon_dark" />
 
         <TextView
             android:id="@+id/textViewPatientName"
@@ -29,12 +29,21 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textViewDistrict"
+            android:id="@+id/textViewMobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewPatientName"
             android:layout_toRightOf="@+id/patientPicture"
-            android:text="Free android tutorials and examples for beginners and expert."
+            android:text="000000"
+            android:textColor="#8b8b8b" />
+
+        <TextView
+            android:id="@+id/textViewDistrict"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewMobile"
+            android:layout_toRightOf="@+id/patientPicture"
+            android:text="Free android tutorials"
             android:textColor="#8b8b8b" />
 
     </RelativeLayout>

@@ -10,21 +10,21 @@
         android:elevation="4dp"
         android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/doctorPicture"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/doctorPictures"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_alignParentTop="true"
             android:layout_marginRight="18dp"
-            android:src="@drawable/ikon" />
+            android:src="@drawable/common_google_signin_btn_icon_dark" />
 
         <TextView
             android:id="@+id/textViewDoctorNameSurname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/doctorPicture"
-            android:paddingBottom="5dp"
+            android:layout_toRightOf="@+id/doctorPictures"
+            android:paddingBottom="1dp"
             android:text="Viral Android"
             android:textSize="24sp" />
 
@@ -32,9 +32,18 @@
             android:id="@+id/textViewAreaExpertise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/doctorPicture"
             android:layout_alignStart="@+id/textViewDoctorNameSurname"
-            android:text="Free android tutorials and examples for beginners and expert."
+            android:layout_below="@+id/textViewDoctorNameSurname"
+            android:text="Free android "
+            android:textColor="#8b8b8b" />
+
+        <TextView
+            android:id="@+id/textViewHospitalName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textViewDoctorNameSurname"
+            android:layout_below="@+id/textViewAreaExpertise"
+            android:text="Free android "
             android:textColor="#8b8b8b" />
 
     </RelativeLayout>

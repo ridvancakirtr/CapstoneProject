@@ -7,11 +7,14 @@
     android:orientation="vertical"
     tools:context="com.example.ridvan.doctorandpatientfirebase.Patient.PatientProfileActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/patientProfilePicture"
         android:layout_width="match_parent"
-        android:layout_height="97dp"
-        app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+        android:layout_height="136dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/common_google_signin_btn_icon_dark" />
 
     <EditText
         android:id="@+id/updatePatientNameSurname"

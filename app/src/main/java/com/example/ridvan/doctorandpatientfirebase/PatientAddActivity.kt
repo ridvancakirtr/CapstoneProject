@@ -15,7 +15,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_my_profile.*
+import kotlinx.android.synthetic.main.activity_patient_profile.*
 import kotlinx.android.synthetic.main.activity_patient_add.*
 import java.util.*
 
@@ -78,6 +78,7 @@ class PatientAddActivity : AppCompatActivity() {
                 .addOnCompleteListener(this, OnCompleteListener<AuthResult> { task ->
                     if (task.isSuccessful) {
                         addPatient.patient_name_surname=patientNameSurname.editableText.toString()
+                        addPatient.patient_profile_picture="http://ishowmy.support/img/user-icon-360x360.jpg"
                         addPatient.patient_gender=gender
                         addPatient.district=spinerDistrict.selectedItem.toString()
                         addPatient.adress=Adress.text.toString()

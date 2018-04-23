@@ -32,15 +32,65 @@ class DoctorProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doctor_profile)
-        readDoctorData()
+        userReadData()
         btnSaveAll.setOnClickListener {
             updateDoctors()
         }
 
         doctorProfilePicture.setOnClickListener {
-                selectProfilePicture()
+            selectProfilePicture()
         }
 
+    }
+
+    private fun updateDoctors() {
+        if (doctorNameSurname.text.isNotEmpty() && doctorOfficePhone.text.isNotEmpty() && doctorMobilePhone.text.isNotEmpty() ){
+            val updateDoctorProfile: HashMap<String, String> = HashMap()
+            updateDoctorProfile["doctor_name_surname"]=doctorNameSurname.text.toString()
+            updateDoctorProfile["doctor_mobile_phone"]=doctorMobilePhone.text.toString()
+            updateDoctorProfile["doctor_office_phone"]=doctorOfficePhone.text.toString()
+            FirebaseDatabase.getInstance().reference
+                    .child("Doctors")
+                    .child(mAuth.currentUser!!.uid)
+                    .updateChildren(updateDoctorProfile as Map<String, String>?)
+                    .addOnCompleteListener {task->
+                        if (task.isSuccessful){
+                            Toast.makeText(this@DoctorProfileActivity,"Profile Successfully Updated", Toast.LENGTH_SHORT).show()
+
+                        }else{
+                            Toast.makeText(this@DoctorProfileActivity,"ERROR Profile Not Updated", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+        }else{
+            Toast.makeText(this@DoctorProfileActivity,"Please fill in the blank fields", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    private fun userReadData() {
+        var ref = FirebaseDatabase.getInstance().reference
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            var query=ref.child("Doctors").orderByKey().equalTo(user.uid)
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError?) {
+
+                }
+                override fun onDataChange(p0: DataSnapshot?) {
+                    for (singleSnapshot in p0!!.children){
+                        var readUser = singleSnapshot?.getValue(DoctorDataModel::class.java)
+                        doctorNameSurname.setText(readUser!!.doctor_name_surname)
+                        doctorAreaExpertise.setText(readUser!!.doctor_area_expertise)
+                        doctorEmail.setText(readUser!!.doctor_email)
+                        doctorHospitalName.setText(readUser!!.doctor_hospital_name)
+                        doctorGender.setText(readUser!!.doctor_gender)
+                        doctorMobilePhone.setText(readUser!!.doctor_mobile_phone)
+                        doctorOfficePhone.setText(readUser!!.doctor_office_phone)
+                        Picasso.with(this@DoctorProfileActivity).load(readUser.doctor_profile_pictures).into(doctorProfilePicture)
+                    }
+                }
+            })
+        }
     }
 
     private fun pictureCompressi(contentURI: Uri) {
@@ -115,71 +165,21 @@ class DoctorProfileActivity : AppCompatActivity() {
 
         private fun uploadImagesToFirebase(result: ByteArray?) {
             var refStore=FirebaseStorage.getInstance().reference
-                    .child("images/users/"+mAuth.currentUser?.uid+"/profilePicture")
+                    .child("images/doctors/"+mAuth.currentUser?.uid+"/profilePicture")
             refStore.putBytes(result!!)
                     .addOnSuccessListener { p0 ->
                         var firebaseUri=p0?.downloadUrl
                         Toast.makeText(this@DoctorProfileActivity, "Updated Profile Picture",Toast.LENGTH_SHORT).show()
-                    FirebaseDatabase.getInstance().reference.child("Doctors")
-                            .child(mAuth.currentUser?.uid)
-                            .child("doctor_profile_pictures")
-                            .setValue(firebaseUri.toString())
+                        FirebaseDatabase.getInstance().reference.child("Doctors")
+                                .child(mAuth.currentUser?.uid)
+                                .child("doctor_profile_pictures")
+                                .setValue(firebaseUri.toString())
 
                     }.addOnFailureListener {
                         Toast.makeText(this@DoctorProfileActivity, "Hata Oluştu!", Toast.LENGTH_SHORT).show()
                     }
         }
 
-    }
-
-    private fun updateDoctors() {
-        if (doctorNameSurname.text.isNotEmpty() && doctorOfficePhone.text.isNotEmpty() && doctorMobilePhone.text.isNotEmpty() ){
-            val updateDoctorProfile: HashMap<String, String> = HashMap()
-            updateDoctorProfile["doctor_name_surname"]=doctorNameSurname.text.toString()
-            updateDoctorProfile["doctor_mobile_phone"]=doctorMobilePhone.text.toString()
-            updateDoctorProfile["doctor_office_phone"]=doctorOfficePhone.text.toString()
-            FirebaseDatabase.getInstance().reference
-                    .child("Doctors")
-                    .child(mAuth.currentUser!!.uid)
-                    .updateChildren(updateDoctorProfile as Map<String, String>?)
-                    .addOnCompleteListener {task->
-                        if (task.isSuccessful){
-                            Toast.makeText(this@DoctorProfileActivity,"Profile Successfully Updated", Toast.LENGTH_SHORT).show()
-
-                        }else{
-                            Toast.makeText(this@DoctorProfileActivity,"ERROR Profile Not Updated", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-        }else{
-            Toast.makeText(this@DoctorProfileActivity,"Please fill in the blank fields", Toast.LENGTH_SHORT).show()
-        }
-
-    }
-
-    private fun readDoctorData() {
-        var ref = FirebaseDatabase.getInstance().reference
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            var query=ref.child("Doctors").orderByKey().equalTo(user.uid)
-            query.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onCancelled(p0: DatabaseError?) {
-
-                }
-                override fun onDataChange(p0: DataSnapshot?) {
-                    for (singleSnapshot in p0!!.children){
-                        var readUser = singleSnapshot?.getValue(DoctorDataModel::class.java)
-                        doctorNameSurname.setText(readUser!!.doctor_name_surname)
-                        doctorAreaExpertise.setText(readUser!!.doctor_area_expertise)
-                        doctorEmail.setText(readUser!!.doctor_email)
-                        doctorHospitalName.setText(readUser!!.doctor_hospital_name)
-                        doctorGender.setText(readUser!!.doctor_gender)
-                        doctorMobilePhone.setText(readUser!!.doctor_mobile_phone)
-                        doctorOfficePhone.setText(readUser!!.doctor_office_phone)
-                        Picasso.with(this@DoctorProfileActivity).load(readUser.doctor_profile_pictures).into(doctorProfilePicture)
-                    }
-                }
-            })
-        }
     }
 
 }
