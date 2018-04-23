@@ -163,7 +163,7 @@ class DoctorAddActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot?) {
                 for (singleSnapshot in p0!!.children){
                     var readUser=singleSnapshot.getValue(HospitalDataModel::class.java)
-                    dataHospital.add(readUser?.hospital_name.toString()+"  |  "+readUser?.hospital_city)
+                    dataHospital.add(readUser?.hospital_name!!)
                 }
             }
 

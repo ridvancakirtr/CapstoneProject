@@ -83,6 +83,8 @@ class PatientAddActivity : AppCompatActivity() {
                         addPatient.district=spinerDistrict.selectedItem.toString()
                         addPatient.adress=Adress.text.toString()
                         addPatient.patient_mobile_phone=patientMobilePhone.text.toString()
+                        addPatient.patient_email=PatEmail.text.toString()
+                        addPatient.patient_password=updatePatPassword.text.toString()
                         addPatient.level = "2"
                         addPatient.patient_user_id=mAuth.currentUser?.uid
                         FirebaseDatabase.getInstance().reference

@@ -18,6 +18,7 @@ class AllDoctorActivity : AppCompatActivity() {
     var allDoctors= ArrayList<DoctorDataModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_all_doctor)
 
         var myAdapter=DoctorAdapter(allDoctors)

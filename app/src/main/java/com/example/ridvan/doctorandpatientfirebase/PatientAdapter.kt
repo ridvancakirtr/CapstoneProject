@@ -1,10 +1,12 @@
 package com.example.ridvan.doctorandpatientfirebase
 
+import android.content.Intent
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.patient_list.view.*
 import java.util.ArrayList
@@ -32,6 +34,12 @@ class PatientAdapter(allPatients: ArrayList<PatientDataModel>) : RecyclerView.Ad
         Picasso.with(holder.itemView.context).load(patientAll.get(position).patient_profile_picture)
                 .into(holder.itemView.patientPicture)
         holder?.textViewMobile?.text=patientAll.get(position).patient_mobile_phone
+        holder.oneLinePatient.setOnClickListener {
+            Toast.makeText(holder.itemView.context,"Tıkladın : "+patientAll.get(position).patient_name_surname, Toast.LENGTH_SHORT).show()
+            var intent= Intent(holder.itemView.context, EditPatientActivity::class.java)
+            intent.putExtra("userId",patientAll.get(position).patient_user_id!!)
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     class PatientViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
