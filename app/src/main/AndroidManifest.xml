@@ -31,7 +31,9 @@
         <activity android:name=".Doctor.DoctorProfileActivity" />
         <activity android:name=".EditDoctorActivity" />
         <activity android:name=".EditPatientActivity" />
-        <activity android:name=".AssignmentDoctorActivity"></activity>
+        <activity android:name=".AssignmentDoctorActivity" />
+        <activity android:name=".AssignmentResultActivity" />
+        <activity android:name=".AssignmentResultPatientActivity"></activity>
     </application>
 
 </manifest>

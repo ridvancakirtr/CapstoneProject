@@ -42,6 +42,10 @@ class AdminActivity : AppCompatActivity() {
             var addDistrictIntent=Intent(this@AdminActivity, DistrictAddActivity::class.java)
             startActivity(addDistrictIntent)
         }
+        btnAssignmentResult.setOnClickListener {
+            var addAssignmentIntent=Intent(this@AdminActivity, AssignmentResultActivity::class.java)
+            startActivity(addAssignmentIntent)
+        }
     }
 
     override fun onResume() {

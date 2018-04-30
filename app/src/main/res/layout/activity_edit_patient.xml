@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,17 +17,11 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/editPatientPictures"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="136dp"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="18dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:src="@drawable/common_google_signin_btn_icon_dark" />
-
-        <EditText
-            android:id="@+id/editPatientDoctor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:ems="10"/>
 
         <EditText
             android:id="@+id/editPatientNameSurname"
@@ -35,6 +29,13 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Name Surname" />
+
+        <EditText
+            android:id="@+id/editPatientDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:ems="10"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,13 +105,14 @@
             android:id="@+id/btnAddDoctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Doctor" />
+            android:text="Assignment Doctor" />
 
         <Button
             android:id="@+id/btnEditPatient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15sp"
             android:text="Update Patient" />
 
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

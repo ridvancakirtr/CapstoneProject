@@ -44,6 +44,15 @@ class PatientDataModel {
         this.doctor_user_id= doctor_user_id
     }
 
+    constructor(patient_name_surname: String?, patient_profile_picture: String?, district: String?, patient_mobile_phone: String?, patient_user_id: String?, doctor_user_id: String?) {
+        this.patient_name_surname = patient_name_surname
+        this.patient_profile_picture = patient_profile_picture
+        this.district = district
+        this.patient_mobile_phone = patient_mobile_phone
+        this.patient_user_id = patient_user_id
+        this.doctor_user_id = doctor_user_id
+    }
+
 
 }
 
