@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:isScrollContainer="true">
-
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chartTemp"
         android:layout_width="match_parent"
-        android:layout_height="152dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_height="186dp"/>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chartEkg"
         android:layout_width="match_parent"
-        android:layout_height="168dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/chartTemp">
-
-    </com.github.mikephil.charting.charts.LineChart>
+        android:layout_height="186dp"/>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chartPulse"
         android:layout_width="match_parent"
-        android:layout_height="186dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
-</RelativeLayout>
+        android:layout_height="186dp"/>
+
+        <Button
+            android:text="Save All Data"
+            android:id="@+id/btnPatientData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>

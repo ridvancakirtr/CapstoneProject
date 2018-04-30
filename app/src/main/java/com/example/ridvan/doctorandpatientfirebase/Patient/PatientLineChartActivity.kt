@@ -1,8 +1,9 @@
 package com.example.ridvan.doctorandpatientfirebase.Patient
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
+import com.example.ridvan.doctorandpatientfirebase.PatientDataTempEkgPulse
 import com.example.ridvan.doctorandpatientfirebase.R
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
@@ -10,13 +11,19 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.nkzawa.socketio.client.IO;
 import com.github.nkzawa.socketio.client.Socket;
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.line_chart.*
 import java.net.URISyntaxException
 import org.json.*
-import java.util.ArrayList
+import java.util.*
 
 class PatientLineChartActivity : AppCompatActivity() {
-    private var mSocket: Socket? = null
+    var ref= FirebaseDatabase.getInstance().reference
+    var mAuth = FirebaseAuth.getInstance().currentUser
+    var patientDataSet= PatientDataTempEkgPulse()
 
+    private var mSocket: Socket? = null
     private val entriesEkg = ArrayList<Entry>()
     private val entriesTemp = ArrayList<Entry>()
     private val entriesPulse = ArrayList<Entry>()
@@ -24,7 +31,36 @@ class PatientLineChartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.line_chart)
+        getAllData()
 
+        btnPatientData.setOnClickListener {
+            saveAllData()
+        }
+    }
+
+    private fun saveAllData() {
+        if (mAuth!=null){
+            var dataID=ref.push().key
+            patientDataSet.ekg="100"
+            patientDataSet.temperature="200"
+            patientDataSet.pulse="300"
+            patientDataSet.datadate="1212121"
+            patientDataSet.id=dataID
+            ref.child("PatientDataTempEkgPulse").child(mAuth!!.uid).child(dataID)
+                    .setValue(patientDataSet)
+                    .addOnCompleteListener {task ->
+                        if (task.isSuccessful){
+                            Toast.makeText(this@PatientLineChartActivity,"All Data Saved", Toast.LENGTH_SHORT).show()
+                        }else{
+                            Toast.makeText(this@PatientLineChartActivity,"ERROR Data Not Saved",Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+        }
+
+    }
+
+    private fun getAllData() {
         val dataSetEkg = LineDataSet(entriesEkg, "Ekg")
         val dataSetTemp = LineDataSet(entriesTemp, "Temperature")
         val dataSetPulse = LineDataSet(entriesPulse, "Pulse")
@@ -96,6 +132,7 @@ class PatientLineChartActivity : AppCompatActivity() {
                 }
             })
         }
-
     }
+
+
 }

@@ -38,7 +38,7 @@
             android:textColor="#8b8b8b" />
 
         <TextView
-            android:id="@+id/textViewHospitalName"
+            android:id="@+id/dataDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textViewDoctorNameSurname"

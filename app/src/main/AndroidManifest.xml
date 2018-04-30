@@ -33,7 +33,12 @@
         <activity android:name=".EditPatientActivity" />
         <activity android:name=".AssignmentDoctorActivity" />
         <activity android:name=".AssignmentResultActivity" />
-        <activity android:name=".AssignmentResultPatientActivity"></activity>
+        <activity android:name=".AssignmentResultPatientActivity" />
+        <activity
+            android:name=".Patient.MyDataActivity"
+            android:label="@string/title_activity_my_data"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Patient.PatientDataActivity"></activity>
     </application>
 
 </manifest>

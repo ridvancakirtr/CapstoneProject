@@ -18,12 +18,17 @@ class PatientActivity : AppCompatActivity() {
                 var userProfile=Intent(this@PatientActivity, PatientProfileActivity::class.java)
                 startActivity(userProfile)
             }
+
+            btnUserData.setOnClickListener {
+                var userData=Intent(this@PatientActivity, PatientDataActivity::class.java)
+                startActivity(userData)
+            }
+
             btnLiveTest.setOnClickListener {
                 var liveTest = Intent(this@PatientActivity, PatientLineChartActivity::class.java)
                 startActivity(liveTest)
             }
         }
-
 
     }
 }
