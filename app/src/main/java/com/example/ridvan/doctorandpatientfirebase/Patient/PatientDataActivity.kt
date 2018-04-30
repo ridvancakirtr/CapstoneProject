@@ -7,7 +7,6 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.ridvan.doctorandpatientfirebase.PatientDataTempEkgPulse
 import com.example.ridvan.doctorandpatientfirebase.R
-import com.example.ridvan.doctorandpatientfirebase.R.id.dataDate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
