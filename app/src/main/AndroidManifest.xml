@@ -30,7 +30,8 @@
         <activity android:name=".AllPatientActivity" />
         <activity android:name=".Doctor.DoctorProfileActivity" />
         <activity android:name=".EditDoctorActivity" />
-        <activity android:name=".EditPatientActivity"></activity>
+        <activity android:name=".EditPatientActivity" />
+        <activity android:name=".AssignmentDoctorActivity"></activity>
     </application>
 
 </manifest>

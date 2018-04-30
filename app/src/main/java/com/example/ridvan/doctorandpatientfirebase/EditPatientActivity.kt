@@ -1,5 +1,6 @@
 package com.example.ridvan.doctorandpatientfirebase
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -22,7 +23,6 @@ class EditPatientActivity : AppCompatActivity() {
     var mPostReference= FirebaseDatabase.getInstance().reference
     var strogeRef= FirebaseStorage.getInstance().reference
     var userId: String? =null
-
     lateinit var spinnerDistrict: Spinner
     var selectDistrict = arrayOf("Please Select District")
     val dataDistrict = ArrayList<String>(Arrays.asList(*selectDistrict))
@@ -30,10 +30,19 @@ class EditPatientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_patient)
+
         userId=intent.getStringExtra("userId")
+
+
         userReadData()
         btnEditPatient.setOnClickListener {
             updatePatient()
+        }
+
+        btnAddDoctor.setOnClickListener {
+            var intent=Intent(this@EditPatientActivity,AssignmentDoctorActivity::class.java)
+            intent.putExtra("userId",userId)
+            startActivity(intent)
         }
 
         editPatientPictures.setOnClickListener {
@@ -67,6 +76,7 @@ class EditPatientActivity : AppCompatActivity() {
                 override fun onDataChange(p0: DataSnapshot?) {
                     for (singleSnapshot in p0!!.children){
                         var readUser = singleSnapshot?.getValue(PatientDataModel::class.java)
+                        doctorReadData(readUser!!.doctor_user_id!!)
                         editPatientNameSurname.setText(readUser!!.patient_name_surname)
                         spinnerReadAndSelectHospital(readUser.district!!)
                         editAdress.setText(readUser!!.adress)
@@ -82,7 +92,24 @@ class EditPatientActivity : AppCompatActivity() {
                     }
                 }
             })
-        }
+
+            }
+
+    }
+
+    private fun doctorReadData(id :String) {
+            var query=mPostReference.child("Doctors").orderByKey().equalTo(id)
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onCancelled(p0: DatabaseError?) {
+
+                }
+                override fun onDataChange(p0: DataSnapshot?) {
+                    for (singleSnapshot in p0!!.children){
+                        var readUser = singleSnapshot?.getValue(DoctorDataModel::class.java)
+                        editPatientDoctor.setText("DR. ${readUser!!.doctor_name_surname!!.toUpperCase()}")
+                    }
+                }
+            })
     }
 
     private fun spinnerReadAndSelectHospital(district: String){
@@ -113,7 +140,7 @@ class EditPatientActivity : AppCompatActivity() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                Log.e("Data", spinnerDistrict.getItemIdAtPosition(position).toString())
+               // Log.e("Data", spinnerDistrict.getItemIdAtPosition(position).toString())
 
             }
         }
@@ -155,4 +182,6 @@ class EditPatientActivity : AppCompatActivity() {
         startActivity(redirectMainPage)
     }
 
+
 }
+

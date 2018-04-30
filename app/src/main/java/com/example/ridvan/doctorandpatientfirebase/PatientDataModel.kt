@@ -15,6 +15,7 @@ class PatientDataModel {
     var patient_password:String?=null
     var level : String? = null
     var patient_user_id: String? = null
+    var doctor_user_id: String? = null
 
     constructor()
 
@@ -32,7 +33,7 @@ class PatientDataModel {
     }
 
 
-    constructor(patient_name_surname: String?, patient_profile_picture: String?, district: String?, patient_mobile_phone: String?, patient_email: String?, patient_password: String?, patient_user_id: String?) {
+    constructor(patient_name_surname: String?, patient_profile_picture: String?, district: String?, patient_mobile_phone: String?, patient_email: String?, patient_password: String?, patient_user_id: String?, doctor_user_id: String?) {
         this.patient_name_surname = patient_name_surname
         this.patient_profile_picture = patient_profile_picture
         this.district = district
@@ -40,6 +41,7 @@ class PatientDataModel {
         this.patient_email = patient_email
         this.patient_password = patient_password
         this.patient_user_id = patient_user_id
+        this.doctor_user_id= doctor_user_id
     }
 
 

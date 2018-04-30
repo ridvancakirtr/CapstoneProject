@@ -49,7 +49,7 @@ class AllPatientActivity : AppCompatActivity() {
                 for (postSnapshot in dataSnapshot.children) {
 
                     val post = postSnapshot.getValue(PatientDataModel::class.java)
-                    allPatient.add(PatientDataModel(post!!.patient_name_surname, post.patient_profile_picture, post.district,post.patient_mobile_phone,post.patient_email,post.patient_password,post.patient_user_id))
+                    allPatient.add(PatientDataModel(post!!.patient_name_surname, post.patient_profile_picture, post.district,post.patient_mobile_phone,post.patient_email,post.patient_password,post.patient_user_id,post.doctor_user_id))
 
                 }
 

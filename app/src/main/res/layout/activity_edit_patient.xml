@@ -23,6 +23,13 @@
             android:src="@drawable/common_google_signin_btn_icon_dark" />
 
         <EditText
+            android:id="@+id/editPatientDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:ems="10"/>
+
+        <EditText
             android:id="@+id/editPatientNameSurname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,9 +101,16 @@
             android:inputType="text" />
 
         <Button
+            android:id="@+id/btnAddDoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Doctor" />
+
+        <Button
             android:id="@+id/btnEditPatient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Update Patient" />
+
     </LinearLayout>
 </LinearLayout>
