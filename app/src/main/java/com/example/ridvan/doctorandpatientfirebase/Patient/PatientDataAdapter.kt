@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.patient_data_list.view.*
 
 abstract class PatientDataAdapter(data: ArrayList<PatientDataTempEkgPulse>): RecyclerView.Adapter<PatientDataAdapter.MyDataHolder>() {
     var dataDate=data
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MyDataHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyDataHolder {
         var inflater= LayoutInflater.from(parent?.context)
         var oneLineData=inflater.inflate(R.layout.patient_data_list,parent,false)
         return MyDataHolder(oneLineData)

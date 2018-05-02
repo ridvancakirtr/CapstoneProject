@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.ridvan.doctorandpatientfirebase"
         minSdkVersion 21
@@ -43,5 +43,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     compile 'com.google.firebase:firebase-storage:15.0.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.android.volley:volley:1.1.0'
 }
 apply plugin: 'com.google.gms.google-services'
