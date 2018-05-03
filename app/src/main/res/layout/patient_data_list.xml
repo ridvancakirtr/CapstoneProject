@@ -11,20 +11,31 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/dataDate"
+            android:id="@+id/startDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/doctorPictures"
             android:paddingBottom="5dp"
             android:text="Viral Android"
-            android:textSize="20sp" />
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/endDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/startDate"
+            android:paddingBottom="5dp"
+            android:text="Viral Android"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewHospitalCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/dataDate"
+            android:layout_below="@+id/startDate"
             android:textSize="12sp"
             android:layout_toRightOf="@+id/doctorPictures"
             android:text="You can find all data about this date"

@@ -3,7 +3,6 @@ package com.example.ridvan.doctorandpatientfirebase.Patient
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
-import com.example.ridvan.doctorandpatientfirebase.PatientDataTempEkgPulse
 import com.example.ridvan.doctorandpatientfirebase.R
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
@@ -21,7 +20,6 @@ import java.util.*
 class PatientLineChartActivity : AppCompatActivity() {
     var ref= FirebaseDatabase.getInstance().reference
     var mAuth = FirebaseAuth.getInstance().currentUser
-    var patientDataSet= PatientDataTempEkgPulse()
 
     private var mSocket: Socket? = null
     private val entriesEkg = ArrayList<Entry>()
@@ -34,31 +32,10 @@ class PatientLineChartActivity : AppCompatActivity() {
         getAllData()
 
         btnPatientData.setOnClickListener {
-            saveAllData()
+
         }
     }
 
-    private fun saveAllData() {
-        if (mAuth!=null){
-            var dataID=ref.push().key
-            patientDataSet.ekg="100"
-            patientDataSet.temperature="200"
-            patientDataSet.pulse="300"
-            patientDataSet.datadate="1212121"
-            patientDataSet.id=dataID
-            ref.child("PatientDataTempEkgPulse").child(mAuth!!.uid).child(dataID)
-                    .setValue(patientDataSet)
-                    .addOnCompleteListener {task ->
-                        if (task.isSuccessful){
-                            Toast.makeText(this@PatientLineChartActivity,"All Data Saved", Toast.LENGTH_SHORT).show()
-                        }else{
-                            Toast.makeText(this@PatientLineChartActivity,"ERROR Data Not Saved",Toast.LENGTH_SHORT).show()
-                        }
-
-                    }
-        }
-
-    }
 
     private fun getAllData() {
         val dataSetEkg = LineDataSet(entriesEkg, "Ekg")

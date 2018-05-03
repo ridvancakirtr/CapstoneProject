@@ -26,7 +26,7 @@ abstract class AssignmentDoctorAdapter(allDoctors: ArrayList<DoctorDataModel>) :
         var oneLineDoctor=itemView as CardView
         var textViewDoctorNameSurname=oneLineDoctor.textViewDoctorNameSurname
         var textViewAreaExpertise=oneLineDoctor.textViewAreaExpertise
-        var textViewHospitalName=oneLineDoctor.dataDate
+        var textViewHospitalName=oneLineDoctor.startDate
 
     }
 }

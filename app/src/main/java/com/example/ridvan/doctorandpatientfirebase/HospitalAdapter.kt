@@ -33,7 +33,7 @@ class HospitalAdapter(allHospitals: ArrayList<HospitalDataModel>) : RecyclerView
     class HospitalsViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
         //içindeki elemanlara buradan erişeceğim
         var oneLineHospital=itemView as CardView
-        var textViewHospitalName=oneLineHospital.dataDate
+        var textViewHospitalName=oneLineHospital.startDate
         var textViewHospitalCity=oneLineHospital.textViewHospitalCity
 
     }
