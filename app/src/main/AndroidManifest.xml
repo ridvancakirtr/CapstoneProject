@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ridvan.doctorandpatientfirebase">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -38,7 +40,8 @@
             android:name=".Patient.MyDataActivity"
             android:label="@string/title_activity_my_data"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Patient.PatientDataActivity"></activity>
+        <activity android:name=".Patient.PatientDataActivity" />
+        <activity android:name=".Patient.PatientDetailDataActivity"></activity>
     </application>
 
 </manifest>

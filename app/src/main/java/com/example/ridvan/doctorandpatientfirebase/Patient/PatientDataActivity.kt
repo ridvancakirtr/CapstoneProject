@@ -1,5 +1,6 @@
 package com.example.ridvan.doctorandpatientfirebase.Patient
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -38,7 +39,9 @@ class PatientDataActivity : AppCompatActivity() {
                 holder?.startDate?.text= dataDate[position].start_date
                 holder?.endDate?.text= dataDate[position].end_date
                 holder?.oneLineData?.setOnClickListener {
-                    Toast.makeText(this@PatientDataActivity,"Tıklandı"+position,Toast.LENGTH_SHORT).show()
+                    var intent=Intent(this@PatientDataActivity,PatientDetailDataActivity::class.java)
+                    intent.putExtra("session_id",allData[position].session_id)
+                    startActivity(intent)
                 }
             }
 
@@ -57,7 +60,7 @@ class PatientDataActivity : AppCompatActivity() {
                         session_id=patient?.getString("session_id")
                         allData.add(JSONPatientData(patient_id,getDateTime(start_date!!),getDateTime(end_date!!),session_id))
 
-                        Log.e("DATA",start_date)
+                        //Log.e("DATA", allData.toString())
                     }
 
                     recycleListViewPatientData.adapter = dataList
