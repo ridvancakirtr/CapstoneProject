@@ -78,7 +78,7 @@ class PatientDataActivity : AppCompatActivity() {
 
     private fun getDateTime(s: String): String? {
         try {
-            val sdf = SimpleDateFormat("dd/MM/yyyy")
+            val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
             val netDate = Date(s.toLong()*1000)
             return sdf.format(netDate)
         } catch (e: Exception) {

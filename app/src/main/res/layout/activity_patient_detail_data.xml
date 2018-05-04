@@ -5,5 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Patient.PatientDetailDataActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartTemp"
+            android:layout_width="match_parent"
+            android:layout_height="186dp"/>
 
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartEkg"
+            android:layout_width="match_parent"
+            android:layout_height="186dp"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartPulse"
+            android:layout_width="match_parent"
+            android:layout_height="186dp"/>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
