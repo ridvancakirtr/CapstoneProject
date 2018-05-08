@@ -32,6 +32,7 @@ class DoctorProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doctor_profile)
+        supportActionBar!!.title = "My Profile"
         userReadData()
         btnSaveAll.setOnClickListener {
             updateDoctors()

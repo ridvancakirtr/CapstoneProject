@@ -13,6 +13,7 @@ class PatientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient)
+        supportActionBar!!.title = "Personal Page of the Patient"
         if (user != null) {
             btnUserProfile.setOnClickListener {
                 var userProfile=Intent(this@PatientActivity, PatientProfileActivity::class.java)

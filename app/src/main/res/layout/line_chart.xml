@@ -23,11 +23,5 @@
         android:layout_width="match_parent"
         android:layout_height="186dp"/>
 
-        <Button
-            android:text="Save All Data"
-            android:id="@+id/btnPatientData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
     </LinearLayout>
 </ScrollView>

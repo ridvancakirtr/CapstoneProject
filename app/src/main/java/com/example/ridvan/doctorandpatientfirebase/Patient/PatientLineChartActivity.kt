@@ -29,11 +29,8 @@ class PatientLineChartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.line_chart)
+        supportActionBar!!.title = "My Live Data"
         getAllData()
-
-        btnPatientData.setOnClickListener {
-
-        }
     }
 
 

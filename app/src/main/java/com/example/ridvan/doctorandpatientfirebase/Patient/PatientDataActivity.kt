@@ -29,7 +29,7 @@ class PatientDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_data)
-
+        supportActionBar!!.title = "My Data Date & Time"
 
         var linearLayoutManeger= LinearLayoutManager(this, LinearLayout.VERTICAL,false)
         recycleListViewPatientData.layoutManager=linearLayoutManeger

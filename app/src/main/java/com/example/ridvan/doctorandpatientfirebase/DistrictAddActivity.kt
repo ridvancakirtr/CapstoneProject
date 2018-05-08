@@ -25,6 +25,7 @@ class DistrictAddActivity : AppCompatActivity() {
     private fun addDistrict() {
         var id = ref.push().key
         district.district=editTextDistrict.text.toString()
+        district.district_id=id
                 ref.child("District").child(id)
                         .setValue(district)
                         .addOnCompleteListener {task ->

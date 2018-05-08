@@ -11,9 +11,14 @@ class DoctorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doctor)
+        supportActionBar!!.title = "Personal Page of the Doctor"
 
         btnMyProfile.setOnClickListener {
             var intent=Intent(this@DoctorActivity,DoctorProfileActivity::class.java)
+            startActivity(intent)
+        }
+        btnMyPatient.setOnClickListener {
+            var intent=Intent(this@DoctorActivity,DoctorPatientListActivity::class.java)
             startActivity(intent)
         }
     }

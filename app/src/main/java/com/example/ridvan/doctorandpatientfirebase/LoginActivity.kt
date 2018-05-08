@@ -18,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        supportActionBar!!.title = "Login Page"
         btnSignIn.setOnClickListener{
             if (editText_UserName.text.isNotEmpty() && editText_Password.text.isNotEmpty()) {
                 mAuth.signInWithEmailAndPassword(editText_UserName.text.toString(), editText_Password.text.toString())

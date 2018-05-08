@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,18 +11,21 @@
         android:layout_height="wrap_content">
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chartTemp"
+            android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="186dp"/>
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chartEkg"
+            android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="186dp"/>
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chartPulse"
+            android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="186dp"/>
 
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

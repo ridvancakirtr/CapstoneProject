@@ -54,6 +54,12 @@
             android:text="District Add" />
 
         <Button
+            android:id="@+id/btnDistrictAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="District All" />
+
+        <Button
             android:id="@+id/btnAssignmentResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

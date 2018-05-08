@@ -43,6 +43,7 @@ class PatientProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_profile)
+        supportActionBar!!.title = "My Profile"
         userReadData()
         btnUpdatePatient.setOnClickListener {
             updateUserAllData()

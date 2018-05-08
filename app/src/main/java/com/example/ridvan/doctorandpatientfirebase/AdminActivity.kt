@@ -42,6 +42,10 @@ class AdminActivity : AppCompatActivity() {
             var addDistrictIntent=Intent(this@AdminActivity, DistrictAddActivity::class.java)
             startActivity(addDistrictIntent)
         }
+        btnDistrictAll.setOnClickListener {
+            var addDistrictAll=Intent(this@AdminActivity, AllDistrict::class.java)
+            startActivity(addDistrictAll)
+        }
         btnAssignmentResult.setOnClickListener {
             var addAssignmentIntent=Intent(this@AdminActivity, AssignmentResultActivity::class.java)
             startActivity(addAssignmentIntent)

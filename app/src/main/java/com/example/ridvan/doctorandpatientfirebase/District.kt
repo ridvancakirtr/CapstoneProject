@@ -5,11 +5,12 @@ package com.example.ridvan.doctorandpatientfirebase
  */
 class District {
     var district:String?=null
+    var district_id:String?=null
 
     constructor()
-
-    constructor(district: String?) {
+    constructor(district: String?, district_id: String?) {
         this.district = district
+        this.district_id = district_id
     }
 
 

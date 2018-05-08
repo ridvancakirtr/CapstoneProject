@@ -34,6 +34,7 @@ class PatientDetailDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_detail_data)
+        supportActionBar!!.title = "My Data Detail Date & Time"
         Toast.makeText(this@PatientDetailDataActivity, intent.getStringExtra("session_id"), Toast.LENGTH_SHORT).show()
 
         val dataSetEkg = LineDataSet(entriesEkg, "Ekg")

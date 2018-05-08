@@ -41,7 +41,9 @@
             android:label="@string/title_activity_my_data"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Patient.PatientDataActivity" />
-        <activity android:name=".Patient.PatientDetailDataActivity"></activity>
+        <activity android:name=".Patient.PatientDetailDataActivity" />
+        <activity android:name=".Doctor.DoctorPatientListActivity" />
+        <activity android:name=".AllDistrict"></activity>
     </application>
 
 </manifest>
