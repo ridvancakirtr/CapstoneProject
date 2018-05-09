@@ -9,7 +9,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
@@ -20,7 +19,7 @@ class EditDoctorActivity : AppCompatActivity() {
     var mPostReference=FirebaseDatabase.getInstance().reference
     var strogeRef= FirebaseStorage.getInstance().reference
     lateinit var spinnerAreaExpertise: Spinner
-    var selectAreaExpertise = arrayOf("Please Select AreaExpertise")
+    var selectAreaExpertise = arrayOf("Please Select SpecialtyBranches")
     val dataAreaExpertise = ArrayList<String>(Arrays.asList(*selectAreaExpertise))
 
     lateinit var spinnerHospital: Spinner
@@ -123,7 +122,7 @@ class EditDoctorActivity : AppCompatActivity() {
 
     private fun spinnerReadAndSelectAreaExpertise(areaexpertise: String){
         var ref=FirebaseDatabase.getInstance().reference
-        var query=ref.child("AreaExpertise").orderByKey()
+        var query=ref.child("SpecialtyBranches").orderByKey()
 
         var spinnerAdapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataAreaExpertise)
 
@@ -134,8 +133,8 @@ class EditDoctorActivity : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot?) {
                 for ((i, singleSnapshot) in p0!!.children.withIndex()){
-                    var readUser=singleSnapshot.getValue(AreaExpertise::class.java)
-                    dataAreaExpertise.add(readUser?.AreaExpertise.toString())
+                    var readUser=singleSnapshot.getValue(SpecialtyBranches::class.java)
+                    dataAreaExpertise.add(readUser?.SpecialtyBranches.toString())
                 }
                 spinnerAreaExpertise.setSelection(spinnerAdapter.getPosition(areaexpertise))
             }

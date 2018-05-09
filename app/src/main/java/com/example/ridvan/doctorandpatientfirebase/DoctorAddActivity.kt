@@ -34,7 +34,7 @@ class DoctorAddActivity : AppCompatActivity() {
 
     var addDoctor = DoctorDataModel()
     var addHospital= HospitalDataModel()
-    var addAreaExpertise= AreaExpertise()
+    var addAreaExpertise= SpecialtyBranches()
     var gender:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -172,7 +172,7 @@ class DoctorAddActivity : AppCompatActivity() {
 
     private fun readAreaExpertise(){
         var ref=FirebaseDatabase.getInstance().reference
-        var query=ref.child("AreaExpertise")
+        var query=ref.child("SpecialtyBranches")
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
 
@@ -180,8 +180,8 @@ class DoctorAddActivity : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot?) {
                 for (singleSnapshot in p0!!.children){
-                    var readUser=singleSnapshot.getValue(AreaExpertise::class.java)
-                    dataAreaExpertise.add(readUser?.AreaExpertise.toString())
+                    var readUser=singleSnapshot.getValue(SpecialtyBranches::class.java)
+                    dataAreaExpertise.add(readUser?.SpecialtyBranches.toString())
                 }
             }
 

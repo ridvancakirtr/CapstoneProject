@@ -43,7 +43,9 @@
         <activity android:name=".Patient.PatientDataActivity" />
         <activity android:name=".Patient.PatientDetailDataActivity" />
         <activity android:name=".Doctor.DoctorPatientListActivity" />
-        <activity android:name=".AllDistrict"></activity>
+        <activity android:name=".AllDistrict" />
+        <activity android:name=".SpecialtyAddActivity" />
+        <activity android:name=".SpecialtyAllActivity"></activity>
     </application>
 
 </manifest>

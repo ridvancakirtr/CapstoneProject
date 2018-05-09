@@ -12,6 +12,7 @@ class AdminActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
+        supportActionBar!!.title="Management Panel"
 
         btnAddDoctor.setOnClickListener {
             var doctorAddIntent=Intent(this@AdminActivity, DoctorAddActivity::class.java)
@@ -49,6 +50,14 @@ class AdminActivity : AppCompatActivity() {
         btnAssignmentResult.setOnClickListener {
             var addAssignmentIntent=Intent(this@AdminActivity, AssignmentResultActivity::class.java)
             startActivity(addAssignmentIntent)
+        }
+        specialtyAdd.setOnClickListener {
+            var specialtyAddIntent=Intent(this@AdminActivity, SpecialtyAddActivity::class.java)
+            startActivity(specialtyAddIntent)
+        }
+        specialtyAll.setOnClickListener {
+            var specialtyAllIntent=Intent(this@AdminActivity, SpecialtyAllActivity::class.java)
+            startActivity(specialtyAllIntent)
         }
     }
 

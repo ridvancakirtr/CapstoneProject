@@ -36,6 +36,18 @@
             android:text="All Patient + Assignment Doctor" />
 
         <Button
+            android:id="@+id/specialtyAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Specialty Branches Add" />
+
+        <Button
+            android:id="@+id/specialtyAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Specialty Branches All" />
+
+        <Button
             android:id="@+id/btnHospitalAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
