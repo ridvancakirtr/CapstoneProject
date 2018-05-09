@@ -22,21 +22,26 @@ class SpecialtyAddActivity : AppCompatActivity() {
     }
 
     private fun addSpecialty() {
-        var id=ref.push().key
-        specialtyBranches.SpecialtyBranches=specialtyText.text.toString()
-        specialtyBranches.SpecialtyBranches_id=id
-        ref.child("SpecialtyBranches")
-                .child(id)
-                .setValue(specialtyBranches)
-                .addOnCompleteListener {task->
-                    if (task.isSuccessful){
-                        Toast.makeText(this@SpecialtyAddActivity,"Specialty is Saved", Toast.LENGTH_SHORT).show()
-                        redirectMainPage()
+        if(!specialtyText.text.isEmpty()){
+            var id=ref.push().key
+            specialtyBranches.SpecialtyBranches=specialtyText.text.toString()
+            specialtyBranches.SpecialtyBranches_id=id
+            ref.child("SpecialtyBranches")
+                    .child(id)
+                    .setValue(specialtyBranches)
+                    .addOnCompleteListener {task->
+                        if (task.isSuccessful){
+                            Toast.makeText(this@SpecialtyAddActivity,"Specialty is Saved", Toast.LENGTH_SHORT).show()
+                            redirectMainPage()
+                        }
+                        else{
+                            Toast.makeText(this@SpecialtyAddActivity,"ERROR Specialty is Not Saved", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                    else{
-                        Toast.makeText(this@SpecialtyAddActivity,"ERROR Specialty is Not Saved", Toast.LENGTH_SHORT).show()
-                    }
-                }
+        }else{
+            Toast.makeText(this@SpecialtyAddActivity,"Please Enter Blank Field", Toast.LENGTH_SHORT).show()
+        }
+
 
     }
 

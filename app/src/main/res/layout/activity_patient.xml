@@ -17,11 +17,11 @@
         android:id="@+id/btnUserData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MY DATA" />
+        android:text="ALL RECORDS" />
 
     <Button
         android:id="@+id/btnLiveTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LIVE DATA TEST" />
+        android:text="LIVE DATA" />
 </LinearLayout>
