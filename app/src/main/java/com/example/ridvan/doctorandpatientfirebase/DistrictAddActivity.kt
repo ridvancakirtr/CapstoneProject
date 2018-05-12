@@ -3,6 +3,8 @@ package com.example.ridvan.doctorandpatientfirebase
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_district_add.*
@@ -13,6 +15,10 @@ class DistrictAddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_district_add)
+        val actionBar=supportActionBar
+        actionBar!!.title="District Add Page"
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
         btnDistrict.setOnClickListener {
             if (editTextDistrict.text.isNotEmpty()){
                 addDistrict()
@@ -41,5 +47,30 @@ class DistrictAddActivity : AppCompatActivity() {
     private fun redirectMainPage(){
         var redirectMainPage= Intent(this@DistrictAddActivity, AdminActivity::class.java)
         startActivity(redirectMainPage)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@DistrictAddActivity,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@DistrictAddActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 }

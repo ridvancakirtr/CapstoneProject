@@ -35,7 +35,7 @@ class PatientAdapter(allPatients: ArrayList<PatientDataModel>) : RecyclerView.Ad
                 .into(holder.itemView.patientPicture)
         holder?.textViewMobile?.text=patientAll.get(position).patient_mobile_phone
         holder.oneLinePatient.setOnClickListener {
-            Toast.makeText(holder.itemView.context,"Tıkladın : "+patientAll.get(position).patient_name_surname, Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context,patientAll.get(position).patient_name_surname, Toast.LENGTH_SHORT).show()
             var intent= Intent(holder.itemView.context, EditPatientActivity::class.java)
             intent.putExtra("userId",patientAll.get(position).patient_user_id!!)
             holder.itemView.context.startActivity(intent)

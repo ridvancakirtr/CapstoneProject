@@ -20,7 +20,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/editDoctorPictures"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="136dp"
             android:layout_alignParentTop="true"
             android:layout_marginRight="18dp"
             android:src="@drawable/common_google_signin_btn_icon_dark" />

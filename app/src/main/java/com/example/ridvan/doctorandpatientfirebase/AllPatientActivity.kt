@@ -1,11 +1,14 @@
 package com.example.ridvan.doctorandpatientfirebase
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.firebase.database.*
@@ -19,6 +22,9 @@ class AllPatientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_patient)
+        val actionBar=supportActionBar
+        actionBar!!.title="All Patient Page"
+        actionBar.setDisplayHomeAsUpEnabled(true)
 
         var myAdapter=PatientAdapter(allPatient)
         recycleListViewPatient.adapter=myAdapter
@@ -61,5 +67,31 @@ class AllPatientActivity : AppCompatActivity() {
                 Log.e("Hata", "loadPost:onCancelled", databaseError.toException())
             }
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        var intent = Intent(this@AllPatientActivity,AdminActivity::class.java)
+        startActivity(intent)
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@AllPatientActivity,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@AllPatientActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 }

@@ -1,8 +1,12 @@
 package com.example.ridvan.doctorandpatientfirebase.Patient
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import com.example.ridvan.doctorandpatientfirebase.LoginActivity
 import com.example.ridvan.doctorandpatientfirebase.R
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
@@ -29,7 +33,9 @@ class PatientLineChartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.line_chart)
-        supportActionBar!!.title = "My Live Data"
+        val actionBar=supportActionBar
+        actionBar!!.title="My Live Data"
+        actionBar.setDisplayHomeAsUpEnabled(true)
         getAllData()
     }
 
@@ -105,6 +111,31 @@ class PatientLineChartActivity : AppCompatActivity() {
                     chartPulse.invalidate()
                 }
             })
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@PatientLineChartActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@PatientLineChartActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
         }
     }
 

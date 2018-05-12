@@ -1,8 +1,11 @@
 package com.example.ridvan.doctorandpatientfirebase.Patient
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
@@ -14,6 +17,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import java.util.ArrayList
 import com.example.ridvan.doctorandpatientfirebase.HourAxisValueFormatter
+import com.example.ridvan.doctorandpatientfirebase.LoginActivity
 
 class PatientDetailDataActivity : AppCompatActivity() {
     //var id:String?=null
@@ -34,8 +38,9 @@ class PatientDetailDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_detail_data)
-        supportActionBar!!.title = "My Data Detail Date & Time"
-        Toast.makeText(this@PatientDetailDataActivity, intent.getStringExtra("session_id"), Toast.LENGTH_SHORT).show()
+        val actionBar=supportActionBar
+        actionBar!!.title="My Data Detail Date & Time"
+        actionBar.setDisplayHomeAsUpEnabled(true)
 
         val dataSetEkg = LineDataSet(entriesEkg, "Ekg")
         val dataSetTemp = LineDataSet(entriesTemp, "Temperature")
@@ -135,5 +140,30 @@ class PatientDetailDataActivity : AppCompatActivity() {
 
     private fun dateToTimestamp(s: String): Long {
         return java.sql.Timestamp.valueOf(s).time
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@PatientDetailDataActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@PatientDetailDataActivity, "Menu 1", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 }

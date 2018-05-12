@@ -16,7 +16,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_doctor_profile.*
 import android.provider.MediaStore
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import com.example.ridvan.doctorandpatientfirebase.LoginActivity
 import com.example.ridvan.doctorandpatientfirebase.R
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
@@ -32,7 +35,9 @@ class DoctorProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doctor_profile)
-        supportActionBar!!.title = "My Profile"
+        val actionBar=supportActionBar
+        actionBar!!.title="My Profile"
+        actionBar.setDisplayHomeAsUpEnabled(true)
         userReadData()
         btnSaveAll.setOnClickListener {
             updateDoctors()
@@ -181,6 +186,31 @@ class DoctorProfileActivity : AppCompatActivity() {
                     }
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@DoctorProfileActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@DoctorProfileActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 
 }

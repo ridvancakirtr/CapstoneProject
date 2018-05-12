@@ -3,6 +3,8 @@ package com.example.ridvan.doctorandpatientfirebase
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
@@ -15,6 +17,9 @@ class SpecialtyAddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_specialty_add)
+        val actionBar=supportActionBar
+        actionBar!!.title="Specialty Branches Add"
+        actionBar.setDisplayHomeAsUpEnabled(true)
 
         btnSpecialty.setOnClickListener {
             addSpecialty()
@@ -48,5 +53,30 @@ class SpecialtyAddActivity : AppCompatActivity() {
     private fun redirectMainPage(){
         var redirectMainPage= Intent(this@SpecialtyAddActivity, AdminActivity::class.java)
         startActivity(redirectMainPage)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@SpecialtyAddActivity,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@SpecialtyAddActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 }

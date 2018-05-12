@@ -5,11 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import com.example.ridvan.doctorandpatientfirebase.LoginActivity
 import com.example.ridvan.doctorandpatientfirebase.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -29,8 +32,9 @@ class PatientDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_data)
-        supportActionBar!!.title = "My Data Date & Time"
-
+        val actionBar=supportActionBar
+        actionBar!!.title="My Data Date & Time"
+        actionBar.setDisplayHomeAsUpEnabled(true)
         var linearLayoutManeger= LinearLayoutManager(this, LinearLayout.VERTICAL,false)
         recycleListViewPatientData.layoutManager=linearLayoutManeger
 
@@ -84,6 +88,30 @@ class PatientDataActivity : AppCompatActivity() {
         } catch (e: Exception) {
             return e.toString()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when(item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@PatientDataActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@PatientDataActivity,"Log Out",Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }

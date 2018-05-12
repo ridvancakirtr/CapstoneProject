@@ -4,6 +4,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -26,6 +28,9 @@ class HospitalAddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hospital_add)
+        val actionBar=supportActionBar
+        actionBar!!.title="Hospital Add"
+        actionBar.setDisplayHomeAsUpEnabled(true)
         readDistrict()
         spinnerAddDistrict()
         btnHospitalAdd.setOnClickListener {
@@ -94,6 +99,31 @@ class HospitalAddActivity : AppCompatActivity() {
     private fun redirectMainPage(){
         var redirectMainPage= Intent(this@HospitalAddActivity, AdminActivity::class.java)
         startActivity(redirectMainPage)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@HospitalAddActivity,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@HospitalAddActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 
 

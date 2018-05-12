@@ -5,6 +5,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -30,7 +32,9 @@ class EditPatientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_patient)
-
+        val actionBar=supportActionBar
+        actionBar!!.title="Patient Update Profile"
+        actionBar.setDisplayHomeAsUpEnabled(true)
         userId=intent.getStringExtra("userId")
 
 
@@ -180,6 +184,32 @@ class EditPatientActivity : AppCompatActivity() {
     private fun redirectMainPage(){
         var redirectMainPage= Intent(this@EditPatientActivity, AllPatientActivity::class.java)
         startActivity(redirectMainPage)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        var intent = Intent(this@EditPatientActivity,AllPatientActivity::class.java)
+        startActivity(intent)
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@EditPatientActivity,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@EditPatientActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 
 

@@ -29,17 +29,13 @@
         <activity android:name=".AllHospitalActivity" />
         <activity android:name=".Patient.PatientLineChartActivity" />
         <activity android:name=".AllDoctorActivity" />
-        <activity android:name=".AllPatientActivity" />
+        <activity android:name=".AllPatientActivity"/>
         <activity android:name=".Doctor.DoctorProfileActivity" />
         <activity android:name=".EditDoctorActivity" />
         <activity android:name=".EditPatientActivity" />
         <activity android:name=".AssignmentDoctorActivity" />
         <activity android:name=".AssignmentResultActivity" />
         <activity android:name=".AssignmentResultPatientActivity" />
-        <activity
-            android:name=".Patient.MyDataActivity"
-            android:label="@string/title_activity_my_data"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Patient.PatientDataActivity" />
         <activity android:name=".Patient.PatientDetailDataActivity" />
         <activity android:name=".Doctor.DoctorPatientListActivity" />

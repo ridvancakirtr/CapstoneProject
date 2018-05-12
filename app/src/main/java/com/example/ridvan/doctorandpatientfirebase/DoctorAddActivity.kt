@@ -3,6 +3,8 @@ package com.example.ridvan.doctorandpatientfirebase
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -41,7 +43,9 @@ class DoctorAddActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_doctor)
-
+        val actionBar=supportActionBar
+        actionBar!!.title="Doctor Add Page"
+        actionBar.setDisplayHomeAsUpEnabled(true)
         readHospital()
         readAreaExpertise()
         HospitalAddSpinner()
@@ -186,6 +190,31 @@ class DoctorAddActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@DoctorAddActivity ,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@DoctorAddActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 
 }

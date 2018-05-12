@@ -10,12 +10,15 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.ridvan.doctorandpatientfirebase.District
+import com.example.ridvan.doctorandpatientfirebase.LoginActivity
 import com.example.ridvan.doctorandpatientfirebase.PatientDataModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -31,11 +34,11 @@ import java.util.*
 
 class PatientProfileActivity : AppCompatActivity() {
     private var contentURI: Uri? = null
-    var strogeRef= FirebaseStorage.getInstance().reference
+    var strogeRef = FirebaseStorage.getInstance().reference
     lateinit var bitmap: Bitmap
     var mAuth = FirebaseAuth.getInstance()
-    var updatePatient= PatientDataModel()
-    lateinit var ds:String
+    var updatePatient = PatientDataModel()
+    lateinit var ds: String
     lateinit var spinnerDistrict: Spinner
     var selectDistrict = arrayOf("Please Select District Specialty")
     val dataDistrict = ArrayList<String>(Arrays.asList(*selectDistrict))
@@ -43,7 +46,9 @@ class PatientProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_profile)
-        supportActionBar!!.title = "My Profile"
+        val actionBar = supportActionBar
+        actionBar!!.title = "My Profile"
+        actionBar.setDisplayHomeAsUpEnabled(true)
         userReadData()
         btnUpdatePatient.setOnClickListener {
             updateUserAllData()
@@ -54,8 +59,12 @@ class PatientProfileActivity : AppCompatActivity() {
     }
 
     private fun updateUserAllData() {
-        if (updatePatientNameSurname.text.isNotEmpty() && updateAdress.text.isNotEmpty() && updatePatientMobilePhone.text.isNotEmpty() && spinnerDistrict.selectedItemPosition!=0){
-            val gender = if(updatePatMale.isChecked){ "Male" }else { "FeMale" }
+        if (updatePatientNameSurname.text.isNotEmpty() && updateAdress.text.isNotEmpty() && updatePatientMobilePhone.text.isNotEmpty() && spinnerDistrict.selectedItemPosition != 0) {
+            val gender = if (updatePatMale.isChecked) {
+                "Male"
+            } else {
+                "FeMale"
+            }
             val updatePatientProfile: HashMap<String, String> = HashMap()
             updatePatientProfile["patient_name_surname"] = updatePatientNameSurname.editableText.toString()
             updatePatientProfile["patient_gender"] = gender
@@ -66,25 +75,25 @@ class PatientProfileActivity : AppCompatActivity() {
                     .child("Patient")
                     .child(mAuth.currentUser?.uid)
                     .updateChildren(updatePatientProfile as Map<String, String>?)
-                    .addOnCompleteListener {task->
-                        if (task.isSuccessful){
-                            Toast.makeText(this@PatientProfileActivity,"Profile Successfully Updated",Toast.LENGTH_SHORT).show()
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this@PatientProfileActivity, "Profile Successfully Updated", Toast.LENGTH_SHORT).show()
                             redirectMainPage()
-                        }else{
-                            Toast.makeText(this@PatientProfileActivity,"ERROR Profile Not Updated",Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@PatientProfileActivity, "ERROR Profile Not Updated", Toast.LENGTH_SHORT).show()
                         }
                     }
-        }else{
-            Toast.makeText(this@PatientProfileActivity,"Please fill in the blank fields",Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this@PatientProfileActivity, "Please fill in the blank fields", Toast.LENGTH_SHORT).show()
         }
 
     }
 
-    private fun spinnerReadAndSelectDistrict(patientDistrict: String){
-        var ref=FirebaseDatabase.getInstance().reference
-        var query=ref.child("District").orderByKey()
+    private fun spinnerReadAndSelectDistrict(patientDistrict: String) {
+        var ref = FirebaseDatabase.getInstance().reference
+        var query = ref.child("District").orderByKey()
 
-        var spinnerAdapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,dataDistrict)
+        var spinnerAdapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataDistrict)
 
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError?) {
@@ -92,17 +101,17 @@ class PatientProfileActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot?) {
-                for ((i, singleSnapshot) in p0!!.children.withIndex()){
-                    var readUser=singleSnapshot.getValue(District::class.java)
+                for ((i, singleSnapshot) in p0!!.children.withIndex()) {
+                    var readUser = singleSnapshot.getValue(District::class.java)
                     dataDistrict.add(readUser?.district.toString())
                 }
                 spinnerDistrict.setSelection(spinnerAdapter.getPosition(patientDistrict))
             }
         })
 
-        spinnerDistrict=findViewById(R.id.spinnerDistrict)
-        spinnerDistrict.adapter= spinnerAdapter
-        spinnerDistrict.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+        spinnerDistrict = findViewById(R.id.spinnerDistrict)
+        spinnerDistrict.adapter = spinnerAdapter
+        spinnerDistrict.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
@@ -118,30 +127,31 @@ class PatientProfileActivity : AppCompatActivity() {
         var ref = FirebaseDatabase.getInstance().reference
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
-            var query=ref.child("Patient").orderByKey().equalTo(user.uid)
+            var query = ref.child("Patient").orderByKey().equalTo(user.uid)
             query.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError?) {
 
                 }
+
                 override fun onDataChange(p0: DataSnapshot?) {
-                    var ds:String
-                    for (singleSnapshot in p0!!.children){
+                    var ds: String
+                    for (singleSnapshot in p0!!.children) {
                         var readUser = singleSnapshot?.getValue(PatientDataModel::class.java)
 
                         updateAdress.setText(readUser?.adress)
                         updatePatientMobilePhone.setText(readUser?.patient_mobile_phone)
                         updatePatientNameSurname.setText(readUser?.patient_name_surname)
                         //if (readUser?.patient_profile_picture=="null"){
-                            Picasso.with(this@PatientProfileActivity)
-                                    .load(readUser?.patient_profile_picture)
-                                    .into(patientProfilePicture)
+                        Picasso.with(this@PatientProfileActivity)
+                                .load(readUser?.patient_profile_picture)
+                                .into(patientProfilePicture)
                         //}
                         ds = readUser?.district!!
                         spinnerReadAndSelectDistrict(ds)
-                        if(readUser?.patient_gender.toString()=="Male"){
-                            updatePatMale.isChecked=true
-                        }else{
-                            updatePatFeMale.isChecked=true
+                        if (readUser?.patient_gender.toString() == "Male") {
+                            updatePatMale.isChecked = true
+                        } else {
+                            updatePatFeMale.isChecked = true
                         }
                     }
                 }
@@ -150,13 +160,13 @@ class PatientProfileActivity : AppCompatActivity() {
 
     }
 
-    private fun redirectMainPage(){
-        var redirectMainPage= Intent(this@PatientProfileActivity, PatientActivity::class.java)
+    private fun redirectMainPage() {
+        var redirectMainPage = Intent(this@PatientProfileActivity, PatientActivity::class.java)
         startActivity(redirectMainPage)
     }
 
     private fun pictureCompressi(contentURI: Uri) {
-        var compress=pictureCompressionBack()
+        var compress = pictureCompressionBack()
         compress.execute(contentURI)
 
     }
@@ -193,28 +203,28 @@ class PatientProfileActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 100 && resultCode== Activity.RESULT_OK && data!=null) {
+        if (requestCode == 100 && resultCode == Activity.RESULT_OK && data != null) {
             contentURI = data.data
             patientProfilePicture.setImageURI(contentURI)
             pictureCompressi(contentURI!!)
         }
     }
 
-    inner class pictureCompressionBack : AsyncTask<Uri, Double, ByteArray?>(){
+    inner class pictureCompressionBack : AsyncTask<Uri, Double, ByteArray?>() {
 
         override fun doInBackground(vararg p0: Uri?): ByteArray? {
-            bitmap = MediaStore.Images.Media.getBitmap(this@PatientProfileActivity.contentResolver,p0[0])
-            var imageByte:ByteArray?=null
-            for (i in 1..5){
-                imageByte=ConvertBitmapByte(bitmap,100/i)
+            bitmap = MediaStore.Images.Media.getBitmap(this@PatientProfileActivity.contentResolver, p0[0])
+            var imageByte: ByteArray? = null
+            for (i in 1..5) {
+                imageByte = ConvertBitmapByte(bitmap, 100 / i)
                 publishProgress(imageByte!!.size.toDouble()) // Main Thread with Worker Thread arasında köprü olur sonucu ->  onProgressUpdate()
             }
             return imageByte
         }
 
         private fun ConvertBitmapByte(bitmap: Bitmap?, i: Int): ByteArray? {
-            var stream= ByteArrayOutputStream()
-            bitmap?.compress(Bitmap.CompressFormat.JPEG,i,stream)
+            var stream = ByteArrayOutputStream()
+            bitmap?.compress(Bitmap.CompressFormat.JPEG, i, stream)
             return stream.toByteArray()
         }
 
@@ -226,12 +236,12 @@ class PatientProfileActivity : AppCompatActivity() {
         }
 
         private fun uploadImagesToFirebase(result: ByteArray?) {
-            var refStore=FirebaseStorage.getInstance().reference
-                    .child("images/patients/"+mAuth.currentUser?.uid+"/profilePicture")
+            var refStore = FirebaseStorage.getInstance().reference
+                    .child("images/patients/" + mAuth.currentUser?.uid + "/profilePicture")
             refStore.putBytes(result!!)
                     .addOnSuccessListener { p0 ->
-                        var firebaseUri=p0?.downloadUrl
-                        Toast.makeText(this@PatientProfileActivity, "Updated Profile Picture",Toast.LENGTH_SHORT).show()
+                        var firebaseUri = p0?.downloadUrl
+                        Toast.makeText(this@PatientProfileActivity, "Updated Profile Picture", Toast.LENGTH_SHORT).show()
                         FirebaseDatabase.getInstance().reference.child("Patient")
                                 .child(mAuth.currentUser?.uid)
                                 .child("patient_profile_picture")
@@ -242,5 +252,30 @@ class PatientProfileActivity : AppCompatActivity() {
                     }
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@PatientProfileActivity, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@PatientProfileActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 }

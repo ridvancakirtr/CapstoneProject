@@ -3,6 +3,8 @@ package com.example.ridvan.doctorandpatientfirebase
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -33,7 +35,9 @@ class PatientAddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_add)
-        //newDistrictAdd()
+        val actionBar=supportActionBar
+        actionBar!!.title="Patient Add Page"
+        actionBar.setDisplayHomeAsUpEnabled(true)
         DistrictAddSpinner()
         readHospital()
 
@@ -146,5 +150,29 @@ class PatientAddActivity : AppCompatActivity() {
         })
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@PatientAddActivity ,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@PatientAddActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
+    }
 
 }

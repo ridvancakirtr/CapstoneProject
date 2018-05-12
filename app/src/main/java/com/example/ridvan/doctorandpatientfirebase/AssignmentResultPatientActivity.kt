@@ -1,10 +1,14 @@
 package com.example.ridvan.doctorandpatientfirebase
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -19,6 +23,12 @@ class AssignmentResultPatientActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assignment_result_patient)
+        val actionBar=supportActionBar
+        actionBar!!.title="Doctor's Patients"
+        actionBar.setDisplayHomeAsUpEnabled(true)
+
+
+
         doctorUserID = intent.getStringExtra("DoctorUserID")
 
         var linearLayoutManeger = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
@@ -43,5 +53,30 @@ class AssignmentResultPatientActivity : AppCompatActivity() {
                 Log.e("Hata", "loadPost:onCancelled", databaseError.toException())
             }
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@AssignmentResultPatientActivity,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@AssignmentResultPatientActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 }

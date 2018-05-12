@@ -1,11 +1,14 @@
 package com.example.ridvan.doctorandpatientfirebase
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.firebase.database.*
@@ -18,8 +21,10 @@ class AllDoctorActivity : AppCompatActivity() {
     var allDoctors= ArrayList<DoctorDataModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_all_doctor)
+        val actionBar=supportActionBar
+        actionBar!!.title="All Doctor"
+        actionBar.setDisplayHomeAsUpEnabled(true)
 
         var myAdapter=DoctorAdapter(allDoctors)
         recycleListViewDoctors.adapter=myAdapter
@@ -62,5 +67,30 @@ class AllDoctorActivity : AppCompatActivity() {
                 Log.e("Hata", "loadPost:onCancelled", databaseError.toException())
             }
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.exitToolbar -> {
+            var intent = Intent(this@AllDoctorActivity,LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@AllDoctorActivity, "Log Out", Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+
+        }
     }
 }
