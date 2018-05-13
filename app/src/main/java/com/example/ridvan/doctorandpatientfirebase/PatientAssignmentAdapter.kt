@@ -13,7 +13,7 @@ import java.util.ArrayList
     /**
      * Kendi Oluşturacağımız view Holderın Adını Yazdık -> HospitalsViewHolder
      */
-class PatientAdapter(allPatients: ArrayList<PatientDataModel>) : RecyclerView.Adapter<PatientAdapter.PatientViewHolder>() {
+class PatientAssignmentAdapter(allPatients: ArrayList<PatientDataModel>) : RecyclerView.Adapter<PatientAssignmentAdapter.PatientViewHolder>() {
     var patientAll=allPatients
     override fun getItemCount(): Int {
         //Adapter iik çalıştığı zaman buraya bakar
@@ -33,7 +33,7 @@ class PatientAdapter(allPatients: ArrayList<PatientDataModel>) : RecyclerView.Ad
         holder?.textViewDistrict?.text=patientAll.get(position).district
         Picasso.with(holder.itemView.context).load(patientAll.get(position).patient_profile_picture)
                 .into(holder.itemView.patientPicture)
-        holder?.textViewMobile?.text=patientAll.get(position).doctor_user_id
+        holder?.textViewMobile?.text=patientAll.get(position).patient_mobile_phone
         holder.oneLinePatient.setOnClickListener {
             Toast.makeText(holder.itemView.context,patientAll.get(position).patient_name_surname, Toast.LENGTH_SHORT).show()
             var intent= Intent(holder.itemView.context, EditPatientActivity::class.java)

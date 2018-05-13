@@ -87,7 +87,6 @@ class EditDoctorActivity : AppCompatActivity() {
                             .addOnCompleteListener {task->
                                 if (task.isSuccessful){
                                     Toast.makeText(this@EditDoctorActivity,"Profile Successfully Updated",Toast.LENGTH_SHORT).show()
-                                    redirectMainPage()
                                 }else{
                                     Toast.makeText(this@EditDoctorActivity,"ERROR Profile Not Updated",Toast.LENGTH_SHORT).show()
                                 }
@@ -192,11 +191,6 @@ class EditDoctorActivity : AppCompatActivity() {
 
             }
         }
-    }
-
-    private fun redirectMainPage(){
-        var redirectMainPage= Intent(this@EditDoctorActivity, AllDoctorActivity::class.java)
-        startActivity(redirectMainPage)
     }
 
     override fun onSupportNavigateUp(): Boolean {

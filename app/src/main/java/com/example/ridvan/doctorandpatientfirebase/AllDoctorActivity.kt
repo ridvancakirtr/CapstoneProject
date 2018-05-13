@@ -19,6 +19,7 @@ class AllDoctorActivity : AppCompatActivity() {
     var ref= FirebaseDatabase.getInstance().reference
     lateinit var mPostReference: DatabaseReference
     var allDoctors= ArrayList<DoctorDataModel>()
+    lateinit var doctorID:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_doctor)
@@ -36,14 +37,36 @@ class AllDoctorActivity : AppCompatActivity() {
 
         val swipeHandler = object : SwipeToDeleteCallback(this) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                ref.child("Doctors").child(allDoctors[viewHolder.adapterPosition].doctor_user_id).removeValue()
+                doctorID= allDoctors[viewHolder.adapterPosition].doctor_user_id!!
+                ref.child("Doctors").child(doctorID).removeValue()
                 Toast.makeText(this@AllDoctorActivity,"Removed ${allDoctors[viewHolder.adapterPosition].doctor_hospital_name}",Toast.LENGTH_LONG).show()
+                patientResetDoctor(doctorID)
                 allDoctors.clear()
+                recycleListViewDoctors.clearOnChildAttachStateChangeListeners()
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
         itemTouchHelper.attachToRecyclerView(recycleListViewDoctors)
 
+    }
+
+    private fun patientResetDoctor(doctorID: String) {
+        ref.child("Patient").orderByKey().addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                for (postSnapshot in p0.children) {
+
+                    val post = postSnapshot.getValue(PatientDataModel::class.java)
+                    if (post!!.doctor_user_id==doctorID){
+                        ref.child("Patient").child(post!!.patient_user_id).child("doctor_user_id").setValue("0")
+                    }
+                }
+            }
+
+        })
     }
 
     private fun readHospitalFirebase() {

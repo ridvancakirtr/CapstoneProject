@@ -44,7 +44,7 @@
             android:layout_alignStart="@+id/textViewDoctorNameSurname"
             android:layout_below="@+id/textViewAreaExpertise"
             android:text="Free android "
-            android:textColor="#8b8b8b" />
+            android:textColor="#3C97E7" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

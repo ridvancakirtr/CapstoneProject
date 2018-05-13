@@ -45,7 +45,7 @@ class AssignmentResultPatientActivity : AppCompatActivity() {
                     }
                 }
 
-                var myAdapter=PatientAdapter(allPatient)
+                var myAdapter=PatientAssignmentAdapter(allPatient)
                 recycleListViewAssginmentResultPatient.adapter=myAdapter
             }
 

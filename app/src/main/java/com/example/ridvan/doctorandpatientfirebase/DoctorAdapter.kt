@@ -35,7 +35,7 @@ class DoctorAdapter(allDoctors: ArrayList<DoctorDataModel>) : RecyclerView.Adapt
         holder?.textViewHospitalName?.text=doctorAll.get(position).doctor_hospital_name
 
         holder.oneLineDoctor.setOnClickListener {
-            Toast.makeText(holder.itemView.context,"Tıkladın : "+doctorAll.get(position).doctor_name_surname,Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context,doctorAll.get(position).doctor_name_surname,Toast.LENGTH_SHORT).show()
             var intent=Intent(holder.itemView.context, EditDoctorActivity::class.java)
             intent.putExtra("userId",doctorAll.get(position).doctor_user_id!!)
             holder.itemView.context.startActivity(intent)
