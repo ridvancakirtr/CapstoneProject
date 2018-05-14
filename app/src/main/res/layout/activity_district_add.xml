@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.ridvan.doctorandpatientfirebase.DistrictAddActivity">
 
 
     <LinearLayout
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10sp"
         android:orientation="vertical">
 
         <EditText
+            android:drawableLeft="@drawable/ic_location_on_black_24dp"
             android:id="@+id/editTextDistrict"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,8 +29,11 @@
 
         <Button
             android:id="@+id/btnDistrict"
+            android:layout_marginTop="10dp"
+            android:textColor="#fff"
+            android:background="@drawable/buttonstyleblue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="District Add" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

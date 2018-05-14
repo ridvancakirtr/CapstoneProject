@@ -35,7 +35,7 @@
             android:layout_below="@+id/textViewPatientName"
             android:layout_toRightOf="@+id/patientPicture"
             android:text="000000"
-            android:textColor="#3C97E7" />
+            android:textColor="#8b8b8b" />
 
         <TextView
             android:id="@+id/textViewDistrict"

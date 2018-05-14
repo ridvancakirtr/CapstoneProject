@@ -25,6 +25,8 @@
 
         <EditText
             android:id="@+id/editPatientNameSurname"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -69,6 +71,8 @@
 
         <EditText
             android:id="@+id/editAdress"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -77,6 +81,8 @@
 
         <EditText
             android:id="@+id/editMobilePhone"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -85,6 +91,8 @@
 
         <EditText
             android:id="@+id/editEmail"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -94,6 +102,8 @@
 
         <EditText
             android:id="@+id/editPassword"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -101,18 +111,33 @@
             android:enabled="false"
             android:inputType="text" />
 
-        <Button
-            android:id="@+id/btnAddDoctor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Assignment Doctor" />
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btnAddDoctor"
+                android:layout_margin="10dp"
+                android:textColor="#fff"
+                android:background="@drawable/buttonstyleblue"
+                android:text="Assignment Doctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/btnEditPatient"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15sp"
-            android:text="Update Patient" />
+            <Button
+                android:id="@+id/btnEditPatient"
+                android:layout_margin="10dp"
+                android:textColor="#fff"
+                android:background="@drawable/buttonstyleblue"
+                android:text="Update Patient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 </ScrollView>

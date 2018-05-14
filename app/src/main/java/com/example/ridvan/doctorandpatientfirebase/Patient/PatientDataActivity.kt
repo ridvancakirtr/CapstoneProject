@@ -3,10 +3,14 @@ package com.example.ridvan.doctorandpatientfirebase.Patient
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.annotation.NonNull
+import android.support.design.internal.SnackbarContentLayout
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.android.volley.Request
@@ -91,7 +95,7 @@ class PatientDataActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu,menu)
+        menuInflater.inflate(R.menu.toolbar_menu2,menu)
         return true
     }
 
@@ -101,6 +105,14 @@ class PatientDataActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
             Toast.makeText(this@PatientDataActivity,"Log Out",Toast.LENGTH_SHORT).show()
+            super.onOptionsItemSelected(item)
+        }
+
+        R.id.liveData -> {
+            var intent = Intent(this@PatientDataActivity, PatientLineChartActivity::class.java)
+            startActivity(intent)
+            finish()
+            Toast.makeText(this@PatientDataActivity,"Live Data",Toast.LENGTH_SHORT).show()
             super.onOptionsItemSelected(item)
         }
 

@@ -303,7 +303,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/cercleshapecolorblue"
-                    android:src="@drawable/ic_local_hospital_black_24dp"
+                    android:src="@drawable/ic_local_hospital_white_24dp"
                     android:padding="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -345,7 +345,7 @@
                     android:layout_height="64dp"
                     android:background="@drawable/cercleshapecolorblue"
                     android:padding="10dp"
-                    android:src="@drawable/ic_local_hospital_black_24dp" />
+                    android:src="@drawable/ic_local_hospital_white_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -395,7 +395,7 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/cercleshapecoloraccent"
-                        android:src="@drawable/ic_add_location_black_24dp"
+                        android:src="@drawable/ic_add_location_white_24dp"
                         android:padding="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -437,7 +437,7 @@
                         android:layout_height="64dp"
                         android:background="@drawable/cercleshapecoloraccent"
                         android:padding="10dp"
-                        android:src="@drawable/ic_add_location_black_24dp" />
+                        android:src="@drawable/ic_add_location_white_24dp" />
 
                     <TextView
                         android:layout_width="wrap_content"

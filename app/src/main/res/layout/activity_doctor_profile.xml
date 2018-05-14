@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,8 +7,17 @@
     android:orientation="vertical"
     tools:context=".Doctor.DoctorProfileActivity">
 
-
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10sp"
+        android:orientation="vertical">
     <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_gravity="center"
         android:id="@+id/doctorProfilePicture"
         android:layout_marginTop="10dp"
         android:layout_width="136dp"
@@ -19,6 +28,8 @@
 
     <EditText
         android:id="@+id/doctorNameSurname"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/ic_person_outline_black_24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -28,6 +39,8 @@
 
     <EditText
         android:id="@+id/doctorAreaExpertise"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/areaexpertise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -38,6 +51,8 @@
 
     <EditText
         android:id="@+id/doctorEmail"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -48,6 +63,8 @@
 
     <EditText
         android:id="@+id/doctorHospitalName"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/ic_local_hospital_black_24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -58,6 +75,8 @@
 
     <EditText
         android:id="@+id/doctorGender"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/ic_wc_black_24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -68,6 +87,8 @@
 
     <EditText
         android:id="@+id/doctorMobilePhone"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -77,6 +98,8 @@
 
     <EditText
         android:id="@+id/doctorOfficePhone"
+        android:drawablePadding="10dp"
+        android:drawableLeft="@drawable/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -86,9 +109,11 @@
 
     <Button
         android:id="@+id/btnSaveAll"
+        android:textColor="#fff"
+        android:background="@drawable/buttonstyleblue"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/doctorOfficePhone"
         android:text="Update" />
-
-</RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
