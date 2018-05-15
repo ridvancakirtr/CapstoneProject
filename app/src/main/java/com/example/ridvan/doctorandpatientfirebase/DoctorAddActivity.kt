@@ -152,7 +152,7 @@ class DoctorAddActivity : AppCompatActivity() {
         }
 
     private fun redirectMainPage(){
-        var redirectMainPage= Intent(this@DoctorAddActivity, AdminActivity::class.java)
+        var redirectMainPage= Intent(this@DoctorAddActivity, DoctorManagementActivity::class.java)
         startActivity(redirectMainPage)
     }
 
@@ -193,7 +193,8 @@ class DoctorAddActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        var intent = Intent(this@DoctorAddActivity,DoctorManagementActivity::class.java)
+        startActivity(intent)
         return true
     }
 

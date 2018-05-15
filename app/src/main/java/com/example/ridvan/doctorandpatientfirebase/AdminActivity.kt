@@ -19,51 +19,29 @@ class AdminActivity : AppCompatActivity() {
         setContentView(R.layout.activity_admin)
         val actionBar=supportActionBar
         actionBar!!.title="Management Panel"
-
-        btnAddDoctor.setOnClickListener {
-            var doctorAddIntent=Intent(this@AdminActivity, DoctorAddActivity::class.java)
-            startActivity(doctorAddIntent)
+        doctorManagement.setOnClickListener {
+            var doctorManagement=Intent(this@AdminActivity, DoctorManagementActivity::class.java)
+            startActivity(doctorManagement)
         }
-        btnAllDoctor.setOnClickListener {
-            var doctorListIntent=Intent(this@AdminActivity, AllDoctorActivity::class.java)
-            startActivity(doctorListIntent)
+        patientManagement.setOnClickListener {
+            var patientManagement=Intent(this@AdminActivity, PatientManagementActivity::class.java)
+            startActivity(patientManagement)
         }
-        btnAllPatient.setOnClickListener {
-            var patientListIntent=Intent(this@AdminActivity, AllPatientActivity::class.java)
-            startActivity(patientListIntent)
+        hospitalManagement.setOnClickListener {
+            var hospitalManagement=Intent(this@AdminActivity, HospitalManagementActivity::class.java)
+            startActivity(hospitalManagement)
         }
-        btnAddPatient.setOnClickListener {
-            var patientAddIntent=Intent(this@AdminActivity, PatientAddActivity::class.java)
-            startActivity(patientAddIntent)
+        districtManagement.setOnClickListener {
+            var districtManagement=Intent(this@AdminActivity, DistrictManagementActivity::class.java)
+            startActivity(districtManagement)
         }
-
-        btnAllHospital.setOnClickListener {
-            var allDoctorIntent=Intent(this@AdminActivity, AllHospitalActivity::class.java)
-            startActivity(allDoctorIntent)
-        }
-        btnHospitalAdd.setOnClickListener {
-            var addHospitalIntent=Intent(this@AdminActivity, HospitalAddActivity::class.java)
-            startActivity(addHospitalIntent)
-        }
-        btnDistrictAdd.setOnClickListener {
-            var addDistrictIntent=Intent(this@AdminActivity, DistrictAddActivity::class.java)
-            startActivity(addDistrictIntent)
-        }
-        btnDistrictAll.setOnClickListener {
-            var addDistrictAll=Intent(this@AdminActivity, AllDistrict::class.java)
-            startActivity(addDistrictAll)
+        specialtyManagement.setOnClickListener {
+            var specialtyManagement=Intent(this@AdminActivity, SpecialtyManagementActivity::class.java)
+            startActivity(specialtyManagement)
         }
         btnAssignmentResult.setOnClickListener {
-            var addAssignmentIntent=Intent(this@AdminActivity, AssignmentResultActivity::class.java)
-            startActivity(addAssignmentIntent)
-        }
-        specialtyAdd.setOnClickListener {
-            var specialtyAddIntent=Intent(this@AdminActivity, SpecialtyAddActivity::class.java)
-            startActivity(specialtyAddIntent)
-        }
-        specialtyAll.setOnClickListener {
-            var specialtyAllIntent=Intent(this@AdminActivity, SpecialtyAllActivity::class.java)
-            startActivity(specialtyAllIntent)
+            var assginmentDoctor=Intent(this@AdminActivity, AssignmentResultActivity::class.java)
+            startActivity(assginmentDoctor)
         }
 
     }

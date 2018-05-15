@@ -25,7 +25,7 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/btnAddDoctor"
+                android:id="@+id/doctorManagement"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -37,15 +37,15 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/cercleshapeyello"
-                        android:src="@drawable/ic_add_circle_outline_black_24dp"
+                        android:background="@drawable/cercleshape_doctor"
+                        android:src="@drawable/doctoricon"
                         android:padding="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="Doctor Add"/>
+                        android:text="Doctor Management"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -55,7 +55,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="New Doctor Add The System"
+                        android:text="Create Update Delete"
+                        android:padding="5dp"
                         android:textColor="@android:color/darker_gray"/>
 
                 </LinearLayout>
@@ -63,7 +64,7 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/btnAddPatient"
+                android:id="@+id/patientManagement"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -75,15 +76,15 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/cercleshapeyello"
-                        android:src="@drawable/ic_add_circle_outline_black_24dp"
+                        android:background="@drawable/cercleshape_doctor"
+                        android:src="@drawable/patienticon"
                         android:padding="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="Patient Add"/>
+                        android:text="Patient Management"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -93,13 +94,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="New Patient Add The System"
+                        android:text="Create Update Delete"
                         android:padding="5dp"
                         android:textColor="@android:color/darker_gray"/>
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-
         </LinearLayout>
 
         <LinearLayout
@@ -111,7 +111,7 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/btnAllDoctor"
+                android:id="@+id/hospitalManagement"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -123,15 +123,15 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/cercleshapepink"
-                        android:src="@drawable/ic_person_black_24dp"
+                        android:background="@drawable/cercleshape_hospital"
+                        android:src="@drawable/hospitalicon"
                         android:padding="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="All Doctor"/>
+                        android:text="Hospital Management"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -141,7 +141,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Lists All Registered Doctors"
+                        android:text="Create Update Delete"
                         android:padding="5dp"
                         android:textColor="@android:color/darker_gray"/>
 
@@ -150,7 +150,7 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/btnAllPatient"
+                android:id="@+id/districtManagement"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -164,15 +164,15 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/cercleshapepink"
+                        android:background="@drawable/cercleshape_hospital"
                         android:padding="10dp"
-                        android:src="@drawable/ic_person_black_24dp" />
+                        android:src="@drawable/locationicon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="All Patient"
+                        android:text="District Management"
                         android:textStyle="bold" />
 
                     <View
@@ -186,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Lists All Registered Patient"
+                        android:text="Create Update Delete"
                         android:textColor="@android:color/darker_gray" />
 
                 </LinearLayout>
@@ -203,7 +203,7 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/specialtyAdd"
+                android:id="@+id/specialtyManagement"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -215,15 +215,15 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/cercleshapedeeppurple"
-                        android:src="@drawable/ic_whatshot_black_24dp"
+                        android:background="@drawable/cercleshape_specialty"
+                        android:src="@drawable/specialtyicon"
                         android:padding="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="Specialty Add"/>
+                        android:text="Specialty Management"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -233,284 +233,57 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="New Specialty Add The System"
+                        android:text="Create Update Delete"
                         android:padding="5dp"
                         android:textColor="@android:color/darker_gray"/>
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:id="@+id/specialtyAll"
-                android:layout_width="160dp"
-                android:layout_height="190dp"
-                android:layout_margin="10dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/cercleshapedeeppurple"
-                        android:src="@drawable/ic_whatshot_black_24dp"
-                        android:padding="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:layout_marginTop="10dp"
-                        android:text="All Specialty"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/lightgray"
-                        android:layout_margin="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Lists All Registered Specialty"
-                        android:padding="5dp"
-                        android:textColor="@android:color/darker_gray"/>
-
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-        <LinearLayout
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:id="@+id/btnHospitalAdd"
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/cercleshapecolorblue"
-                    android:src="@drawable/ic_local_hospital_white_24dp"
-                    android:padding="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:text="Hospital Add"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/lightgray"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="New Hospital Add The System"
-                    android:padding="5dp"
-                    android:textColor="@android:color/darker_gray"/>
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-        <android.support.v7.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:id="@+id/btnAllHospital"
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:background="@drawable/cercleshapecolorblue"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_local_hospital_white_24dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="All Hospital"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_margin="10dp"
-                    android:background="@color/lightgray" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="Lists All Registered Hospital"
-                    android:textColor="@android:color/darker_gray" />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-    </LinearLayout>
-
-        <LinearLayout
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <android.support.v7.widget.CardView
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:id="@+id/btnDistrictAdd"
-                android:layout_width="160dp"
-                android:layout_height="190dp"
-                android:layout_margin="10dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/cercleshapecoloraccent"
-                        android:src="@drawable/ic_add_location_white_24dp"
-                        android:padding="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:layout_marginTop="10dp"
-                        android:text="District Add"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/lightgray"
-                        android:layout_margin="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="New District Add The System"
-                        android:padding="5dp"
-                        android:textColor="@android:color/darker_gray"/>
-
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                android:foreground="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:id="@+id/btnDistrictAll"
-                android:layout_width="160dp"
-                android:layout_height="190dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/cercleshapecoloraccent"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_add_location_white_24dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="All District"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Lists All Registered District"
-                        android:textColor="@android:color/darker_gray" />
-
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:id="@+id/btnAssignmentResult"
-                android:layout_width="340dp"
-                android:layout_height="150dp"
+                android:layout_width="160dp"
+                android:layout_height="190dp"
                 android:layout_margin="10dp">
-                <LinearLayout
 
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/cercleshapecolorassignment"
-                        android:src="@drawable/ic_device_hub_black_24dp"
-                        android:padding="10dp"/>
+                        android:background="@drawable/cercleshape_specialty"
+                        android:padding="10dp"
+                        android:src="@drawable/assignmenticon" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="Assignment Operations"/>
+                        android:text="Assignment Operation"
+                        android:textStyle="bold" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/lightgray"
-                        android:layout_margin="10dp"/>
+                        android:layout_margin="10dp"
+                        android:background="@color/lightgray" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Doctors' List of Patients"
                         android:padding="5dp"
-                        android:textColor="@android:color/darker_gray"/>
+                        android:text="Assignment List"
+                        android:textColor="@android:color/darker_gray" />
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
+
         </LinearLayout>
 
     </LinearLayout>

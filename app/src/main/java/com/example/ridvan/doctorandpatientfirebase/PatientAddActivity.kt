@@ -112,7 +112,7 @@ class PatientAddActivity : AppCompatActivity() {
     }
 
     private fun redirectMainPage(){
-        val redirectMainPage= Intent(this@PatientAddActivity, AdminActivity::class.java)
+        val redirectMainPage= Intent(this@PatientAddActivity, PatientManagementActivity::class.java)
         startActivity(redirectMainPage)
     }
 
@@ -151,7 +151,8 @@ class PatientAddActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        var intent = Intent(this@PatientAddActivity,PatientManagementActivity::class.java)
+        startActivity(intent)
         return true
     }
 

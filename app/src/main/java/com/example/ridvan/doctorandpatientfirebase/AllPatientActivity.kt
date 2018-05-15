@@ -74,7 +74,7 @@ class AllPatientActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        var intent = Intent(this@AllPatientActivity,AdminActivity::class.java)
+        var intent = Intent(this@AllPatientActivity,PatientManagementActivity::class.java)
         startActivity(intent)
         return true
     }

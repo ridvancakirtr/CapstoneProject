@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    tools:context="com.example.ridvan.doctorandpatientfirebase.Doctor.DoctorActivity">
-    <LinearLayout
+    android:padding="10dp"
+    android:background="#fcfcfc"
+    tools:context=".DoctorManagementActivity">
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
 
         <LinearLayout
             android:clipToPadding="false"
@@ -23,7 +20,7 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/btnMyProfile"
+                android:id="@+id/btnAddDoctor"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -36,14 +33,14 @@
                         android:layout_width="64dp"
                         android:layout_height="64dp"
                         android:background="@drawable/cercleshape_doctor"
-                        android:src="@drawable/ic_person_black_24dp"
+                        android:src="@drawable/ic_add_circle_outline_black_24dp"
                         android:padding="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="My Profile"/>
+                        android:text="Doctor Add"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -53,7 +50,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="My Profile"
+                        android:text="New Doctor Add The System"
                         android:textColor="@android:color/darker_gray"/>
 
                 </LinearLayout>
@@ -61,7 +58,7 @@
             <android.support.v7.widget.CardView
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:id="@+id/btnMyPatient"
+                android:id="@+id/btnAllDoctor"
                 android:layout_width="160dp"
                 android:layout_height="190dp"
                 android:layout_margin="10dp">
@@ -73,15 +70,15 @@
                     <ImageView
                         android:layout_width="64dp"
                         android:layout_height="64dp"
-                        android:background="@drawable/cercleshape_hospital"
-                        android:src="@drawable/ic_airline_seat_flat_angled_black_24dp"
+                        android:background="@drawable/cercleshape_doctor"
+                        android:src="@drawable/alldoctoricon"
                         android:padding="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:layout_marginTop="10dp"
-                        android:text="My Patient"/>
+                        android:text="All Doctor"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -91,16 +88,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="My Patient"
+                        android:text="Lists All Registered Doctors"
                         android:padding="5dp"
                         android:textColor="@android:color/darker_gray"/>
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>
-
         </LinearLayout>
 
-
-
-</LinearLayout>
-</LinearLayout>
+ </LinearLayout>

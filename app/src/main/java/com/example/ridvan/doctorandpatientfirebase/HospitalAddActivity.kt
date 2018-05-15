@@ -97,7 +97,7 @@ class HospitalAddActivity : AppCompatActivity() {
     }
 
     private fun redirectMainPage(){
-        var redirectMainPage= Intent(this@HospitalAddActivity, AdminActivity::class.java)
+        var redirectMainPage= Intent(this@HospitalAddActivity, HospitalManagementActivity::class.java)
         startActivity(redirectMainPage)
     }
 

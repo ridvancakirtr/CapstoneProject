@@ -29,7 +29,7 @@
         <activity android:name=".AllHospitalActivity" />
         <activity android:name=".Patient.PatientLineChartActivity" />
         <activity android:name=".AllDoctorActivity" />
-        <activity android:name=".AllPatientActivity"/>
+        <activity android:name=".AllPatientActivity" />
         <activity android:name=".Doctor.DoctorProfileActivity" />
         <activity android:name=".EditDoctorActivity" />
         <activity android:name=".EditPatientActivity" />
@@ -41,7 +41,13 @@
         <activity android:name=".Doctor.DoctorPatientListActivity" />
         <activity android:name=".AllDistrict" />
         <activity android:name=".SpecialtyAddActivity" />
-        <activity android:name=".SpecialtyAllActivity"></activity>
+        <activity android:name=".SpecialtyAllActivity" />
+        <activity android:name=".DoctorManagementActivity" />
+        <activity android:name=".PatientManagementActivity" />
+        <activity android:name=".HospitalManagementActivity" />
+        <activity android:name=".DistrictManagementActivity" />
+        <activity android:name=".SpecialtyManagementActivity" />
+        <activity android:name=".AssignmentManagementActivity"></activity>
     </application>
 
 </manifest>
