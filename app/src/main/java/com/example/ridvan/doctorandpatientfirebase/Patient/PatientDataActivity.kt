@@ -54,7 +54,7 @@ class PatientDataActivity : AppCompatActivity() {
             }
 
         }
-
+        progressBar.visibility=View.INVISIBLE
         val url = "http://ciu.ysr.net.tr/user/1"
 
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
@@ -81,7 +81,7 @@ class PatientDataActivity : AppCompatActivity() {
 
         // Access the RequestQueue through your singleton class.
         MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
-
+        progressBar.visibility=View.VISIBLE
     }
 
     private fun getDateTime(s: String): String? {

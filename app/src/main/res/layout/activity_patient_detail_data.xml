@@ -14,13 +14,21 @@
             android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="186dp"/>
-
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chartEkg"
             android:layout_marginTop="20sp"
             android:layout_width="match_parent"
             android:layout_height="186dp"/>
-
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chartPulse"
             android:layout_marginTop="20sp"

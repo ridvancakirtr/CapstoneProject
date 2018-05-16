@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
@@ -18,6 +19,7 @@ import com.github.mikephil.charting.data.LineDataSet
 import java.util.ArrayList
 import com.example.ridvan.doctorandpatientfirebase.HourAxisValueFormatter
 import com.example.ridvan.doctorandpatientfirebase.LoginActivity
+import kotlinx.android.synthetic.main.activity_patient_detail_data.*
 
 class PatientDetailDataActivity : AppCompatActivity() {
     //var id:String?=null
@@ -69,11 +71,12 @@ class PatientDetailDataActivity : AppCompatActivity() {
         chartTemp.data = lineDataTemp
         chartPulse.data = lineDataPulse
 
+        progressBar.visibility=View.VISIBLE
+
         val url = "http://ciu.ysr.net.tr/sensor/1?session_id=${intent.getStringExtra("session_id")}"
 
         val jsonObjectRequest = JsonArrayRequest(Request.Method.GET, url, null,
                 Response.Listener { response ->
-
                     for (item in 0 until response.length()){
                         type=response.getJSONObject(item).getString("type")
                         if(type=="1"){
@@ -126,7 +129,7 @@ class PatientDetailDataActivity : AppCompatActivity() {
                         }
                     }
 
-
+                    progressBar.visibility=View.INVISIBLE
 
                 },
                 Response.ErrorListener { error ->

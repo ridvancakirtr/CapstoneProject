@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_login.*
 import android.view.View.SYSTEM_UI_FLAG_FULLSCREEN
-
+import android.view.View.VISIBLE
 
 
 class LoginActivity : AppCompatActivity() {
@@ -25,8 +25,8 @@ class LoginActivity : AppCompatActivity() {
         val actionBar=supportActionBar
         actionBar!!.title="Login Page"
         actionBar.hide()
-
         btnSignIn.setOnClickListener{
+            progressBar.visibility= View.INVISIBLE
             if (editText_UserName.text.isNotEmpty() && editText_Password.text.isNotEmpty()) {
                 mAuth.signInWithEmailAndPassword(editText_UserName.text.toString(), editText_Password.text.toString())
                         .addOnCompleteListener { task ->
@@ -39,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Please Enter Username and Password", Toast.LENGTH_SHORT).show()
             }
+            progressBar.visibility= View.VISIBLE
         }
     }
     fun userInformation(){
