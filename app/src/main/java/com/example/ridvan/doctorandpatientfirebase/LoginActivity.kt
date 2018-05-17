@@ -26,7 +26,6 @@ class LoginActivity : AppCompatActivity() {
         actionBar!!.title="Login Page"
         actionBar.hide()
         btnSignIn.setOnClickListener{
-            progressBar.visibility= View.INVISIBLE
             if (editText_UserName.text.isNotEmpty() && editText_Password.text.isNotEmpty()) {
                 mAuth.signInWithEmailAndPassword(editText_UserName.text.toString(), editText_Password.text.toString())
                         .addOnCompleteListener { task ->
@@ -39,7 +38,6 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Please Enter Username and Password", Toast.LENGTH_SHORT).show()
             }
-            progressBar.visibility= View.VISIBLE
         }
     }
     fun userInformation(){
