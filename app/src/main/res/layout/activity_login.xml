@@ -3,39 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@drawable/backdoctor"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:orientation="vertical"
-        android:padding="50dp"
-        android:background="#ffffff"
+        android:padding="150dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/logo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:textColor="#808080"
-            android:layout_marginTop="20dp"
-            android:text="Remote Patient Control System for Doctors"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:textColor="#808080"
-            android:text="The doctor can remotely control all patients with this application. See Tempature,Pulse,Ekg patient's history.Doctors can work any time of the day at home or clinic.Patients can be started by installing the application on mobile devices only necessary to connect the devices to the body so nurse, do not need support staff."
-            android:textSize="15sp"
-            android:layout_marginTop="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:background="#ffffff"
         android:orientation="vertical"
         android:visibility="visible">
 
