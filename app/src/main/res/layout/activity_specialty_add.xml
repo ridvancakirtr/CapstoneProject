@@ -19,7 +19,7 @@
         <EditText
             android:id="@+id/specialtyText"
             android:drawablePadding="10dp"
-            android:drawableLeft="@drawable/ic_person_outline_black_24dp"
+            android:drawableLeft="@drawable/areaexpertise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
