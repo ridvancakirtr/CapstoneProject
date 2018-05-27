@@ -194,7 +194,8 @@ class EditDoctorActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        var intent = Intent(this@EditDoctorActivity,AllDoctorActivity::class.java)
+        startActivity(intent)
         return true
     }
 

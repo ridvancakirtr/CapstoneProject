@@ -93,7 +93,8 @@ class AllDoctorActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        var intent = Intent(this@AllDoctorActivity,DoctorManagementActivity::class.java)
+        startActivity(intent)
         return true
     }
 

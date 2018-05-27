@@ -39,7 +39,6 @@ class AllPatientActivity : AppCompatActivity() {
                 ref.child("Patient").child(allPatient[viewHolder.adapterPosition].patient_user_id).removeValue()
                 Toast.makeText(this@AllPatientActivity,"Removed ${allPatient[viewHolder.adapterPosition].patient_name_surname}",Toast.LENGTH_LONG).show()
                 allPatient.clear()
-                recycleListViewPatient.clearOnChildAttachStateChangeListeners()
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
@@ -55,7 +54,7 @@ class AllPatientActivity : AppCompatActivity() {
                 for (postSnapshot in dataSnapshot.children) {
 
                     val post = postSnapshot.getValue(PatientDataModel::class.java)
-                    if (post!!.doctor_user_id=="0"){
+                    if (post!!.doctor_user_id=="null"){
                         allPatient.add(PatientDataModel(post!!.patient_name_surname, post.patient_profile_picture, post.district,post.patient_mobile_phone,post.patient_email,post.patient_password,post.patient_user_id,"no doctor was assigned"))
                     }else{
                         allPatient.add(PatientDataModel(post!!.patient_name_surname, post.patient_profile_picture, post.district,post.patient_mobile_phone,post.patient_email,post.patient_password,post.patient_user_id,"doctor assigned"))

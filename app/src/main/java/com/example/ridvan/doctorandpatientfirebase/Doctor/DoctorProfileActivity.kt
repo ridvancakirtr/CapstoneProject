@@ -182,7 +182,7 @@ class DoctorProfileActivity : AppCompatActivity() {
                                 .setValue(firebaseUri.toString())
 
                     }.addOnFailureListener {
-                        Toast.makeText(this@DoctorProfileActivity, "Hata Oluştu!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@DoctorProfileActivity, "Error Occurred!", Toast.LENGTH_SHORT).show()
                     }
         }
 

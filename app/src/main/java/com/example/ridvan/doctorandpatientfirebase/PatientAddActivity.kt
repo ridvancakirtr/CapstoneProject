@@ -90,6 +90,7 @@ class PatientAddActivity : AppCompatActivity() {
                         addPatient.patient_email=PatEmail.text.toString()
                         addPatient.patient_password=updatePatPassword.text.toString()
                         addPatient.level = "2"
+                        addPatient.doctor_user_id="null"
                         addPatient.patient_user_id=mAuth.currentUser?.uid
                         FirebaseDatabase.getInstance().reference
                                 .child("Patient")
