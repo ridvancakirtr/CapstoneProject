@@ -80,7 +80,7 @@ class EditPatientActivity : AppCompatActivity() {
                 override fun onDataChange(p0: DataSnapshot?) {
                     for (singleSnapshot in p0!!.children){
                         var readUser = singleSnapshot?.getValue(PatientDataModel::class.java)
-                        doctorReadData(readUser!!.patient_user_id!!)
+                        doctorReadData(readUser!!.doctor_user_id!!)
                         editPatientNameSurname.setText(readUser!!.patient_name_surname)
                         spinnerReadAndSelectHospital(readUser.district!!)
                         editAdress.setText(readUser!!.adress)
@@ -102,6 +102,7 @@ class EditPatientActivity : AppCompatActivity() {
     }
 
     private fun doctorReadData(id :String) {
+        Log.e("doktor",id)
             var query=mPostReference.child("Doctors").orderByKey().equalTo(id)
             query.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError?) {
@@ -111,6 +112,7 @@ class EditPatientActivity : AppCompatActivity() {
                     for (singleSnapshot in p0!!.children){
                         var readUser = singleSnapshot?.getValue(DoctorDataModel::class.java)
                         editPatientDoctor.setText("DR. ${readUser!!.doctor_name_surname!!.toUpperCase()}")
+                        Log.e("doktor",readUser!!.doctor_name_surname!!.toUpperCase())
                     }
                 }
             })
