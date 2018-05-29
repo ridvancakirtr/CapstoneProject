@@ -113,6 +113,7 @@ class EditPatientActivity : AppCompatActivity() {
                         var readUser = singleSnapshot?.getValue(DoctorDataModel::class.java)
                         editPatientDoctor.setText("DR. ${readUser!!.doctor_name_surname!!.toUpperCase()}")
                         Log.e("doktor",readUser!!.doctor_name_surname!!.toUpperCase())
+                        
                     }
                 }
             })
